@@ -321,19 +321,20 @@
 </p>
 
 
- <script>
+<script>
     async function loadConfig() {
         try {
             const response = await fetch("config.json");
+            if (!response.ok) {
+                throw new Error("Failed to load config.json");
+            }
             const config = await response.json();
 
-            // Get the drive message element
+            // Get the drive ID from the HTML attribute
             const driveElement = document.getElementById("drive_message");
-
-            // Get the drive ID from the HTML attribute (instead of the URL)
             const DRIVE_ID = driveElement.getAttribute("data-drive") || "drive_police";
 
-            // Get the correct drive message from the config
+            // Get the drive message from config.json
             const driveMessage = config.drives[DRIVE_ID]?.message || "Yearly Drive";
 
             // Update the page content
@@ -341,9 +342,9 @@
 
         } catch (error) {
             console.error("Error loading config.json:", error);
+            document.getElementById("drive_message").textContent = "Error loading message";
         }
     }
 
-    // Load the config when the page is ready
     document.addEventListener("DOMContentLoaded", loadConfig);
 </script>
