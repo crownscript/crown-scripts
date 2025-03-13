@@ -321,25 +321,16 @@
 </p>
 
 
+<script src="config.js"></script>
 <script>
     async function loadConfig() {
         try {
-            const response = await fetch("config.js");
-            if (!response.ok) {
-                throw new Error("Failed to load config.js");
-            }
-            const config = await response.js();
-
-            // Get the drive ID from the HTML attribute
-            const driveElement = document.getElementById("drive_message");
-            const DRIVE_ID = driveElement.getAttribute("data-drive") || "drive_police";
-
-            // Get the drive message from config.json
+            // Use `config` directly instead of fetching
+            const DRIVE_ID = document.getElementById("drive_message").getAttribute("data-drive") || "drive_police";
             const driveMessage = config.drives[DRIVE_ID]?.message || "Yearly Drive";
 
-            // Update the page content
-            driveElement.textContent = driveMessage;
-
+            // Update the text content
+            document.getElementById("drive_message").textContent = driveMessage;
         } catch (error) {
             console.error("Error loading config.js:", error);
             document.getElementById("drive_message").textContent = "Error loading message";
@@ -348,3 +339,4 @@
 
     document.addEventListener("DOMContentLoaded", loadConfig);
 </script>
+
