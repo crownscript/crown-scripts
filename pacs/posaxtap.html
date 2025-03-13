@@ -327,12 +327,20 @@
 <script>
     async function loadConfig() {
         try {
-            // Use `config` directly instead of fetching
-            const DRIVE_ID = document.getElementById("drive_message").getAttribute("data-drive") || "drive_police";
-            const driveMessage = config.drives[DRIVE_ID]?.message || "Yearly Drive";
+            // Ensure config.js is loaded
+            if (!window.config) {
+                throw new Error("config.js not loaded");
+            }
 
-            // Update the text content
-            document.getElementById("drive_message").textContent = driveMessage;
+            // Get the drive ID from the HTML attribute
+            const driveElement = document.getElementById("drive_message");
+            const DRIVE_ID = driveElement.getAttribute("data-drive") || "drive_police";
+
+            // Get the drive message from config.js
+            const driveMessage = window.config.drives[DRIVE_ID]?.message || "Yearly Drive";
+
+            // Update the page content
+            driveElement.textContent = driveMessage;
         } catch (error) {
             console.error("Error loading config.js:", error);
             document.getElementById("drive_message").textContent = "Error loading message";
@@ -341,4 +349,5 @@
 
     document.addEventListener("DOMContentLoaded", loadConfig);
 </script>
+
 
