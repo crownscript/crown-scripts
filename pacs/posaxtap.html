@@ -323,29 +323,33 @@
 </p>
 
 
-  <script>
-        // Get URL parameters
-        let params = new URLSearchParams(window.location.search);
-        let debugMessage = "<h2>Debugging - Received Parameters:</h2>";
+ <script>
+        async function loadConfig() {
+            try {
+                const response = await fetch("config.json");
+                const config = await response.json();
 
-        // Loop through all parameters and display them
-        for (let [key, value] of params.entries()) {
-            debugMessage += `<p>${key}: ${value}</p>`;
+                // Get drive ID from URL or default to "drive_police"
+                const params = new URLSearchParams(window.location.search);
+                const DRIVE_ID = params.get("drive") || "drive_police";
+
+                // Get drive message and donation tiers
+                const driveMessage = config.drives[DRIVE_ID]?.message || "Yearly Benefit Drive";
+                const moneySpots = config.money_spots["1"];  // Adjust this if there are multiple levels
+
+                // Replace drive message in the script
+                document.getElementById("drive_message").textContent = driveMessage;
+
+                // Replace money spot values
+                document.getElementById("gold_amount").textContent = moneySpots.gold;
+                document.getElementById("silver_amount").textContent = moneySpots.silver;
+                document.getElementById("bronze_amount").textContent = moneySpots.bronze;
+
+            } catch (error) {
+                console.error("Error loading config.json:", error);
+            }
         }
 
-        // Display debugging information at the top
-        document.body.insertAdjacentHTML("afterbegin", debugMessage);
-
-        // Insert data into the correct places in the script
-        document.addEventListener("DOMContentLoaded", function() {
-            if (params.has("first_name")) {
-                document.getElementById("first_name").textContent = params.get("first_name");
-            }
-            if (params.has("last_name")) {
-                document.getElementById("last_name").textContent = params.get("last_name");
-            }
-            if (params.has("security_phrase")) {
-                document.getElementById("security_phrase_display").textContent = params.get("security_phrase");
-            }
-        });
+        // Load the config when the page is ready
+        document.addEventListener("DOMContentLoaded", loadConfig);
     </script>
