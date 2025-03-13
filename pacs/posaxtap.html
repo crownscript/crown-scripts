@@ -324,11 +324,11 @@
 <script>
     async function loadConfig() {
         try {
-            const response = await fetch("config.json");
+            const response = await fetch("config.js");
             if (!response.ok) {
-                throw new Error("Failed to load config.json");
+                throw new Error("Failed to load config.js");
             }
-            const config = await response.json();
+            const config = await response.js();
 
             // Get the drive ID from the HTML attribute
             const driveElement = document.getElementById("drive_message");
@@ -341,7 +341,7 @@
             driveElement.textContent = driveMessage;
 
         } catch (error) {
-            console.error("Error loading config.json:", error);
+            console.error("Error loading config.js:", error);
             document.getElementById("drive_message").textContent = "Error loading message";
         }
     }
