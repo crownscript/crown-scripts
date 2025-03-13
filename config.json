@@ -4,25 +4,25 @@
         "drive_police": {
             "name": "Police Drive",
             "id": "drive_police",
-            "message": "Support your local police officers this holiday season!"
+            "message": "Yearly Drive"
         },
         "drive_pacs": {
             "name": "PACs Drive",
             "id": "drive_pacs",
-            "message": "Your donation helps us advocate for policies that matter!"
+            "message": "Yearly Drive"
         },
         "drive_firefighters": {
             "name": "Firefighters Drive",
             "id": "drive_firefighters",
-            "message": "Help support our brave firefighters this holiday season!"
+            "message": "Yearly Drive"
         }
     },
 
     "money_spots": {
         "1": {
-            "gold": 200,
-            "silver": 100,
-            "bronze": 50
+            "gold": 105,
+            "silver": 95,
+            "bronze": 75
         }
     },
 
