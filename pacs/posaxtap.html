@@ -322,32 +322,28 @@
 
 
  <script>
-        async function loadConfig() {
-            try {
-                const response = await fetch("config.json");
-                const config = await response.json();
+    async function loadConfig() {
+        try {
+            const response = await fetch("config.json");
+            const config = await response.json();
 
-                // Get drive ID from URL or default to "drive_police"
-                const params = new URLSearchParams(window.location.search);
-                const DRIVE_ID = params.get("drive") || "drive_police";
+            // Get the drive message element
+            const driveElement = document.getElementById("drive_message");
 
-                // Get drive message and donation tiers
-                const driveMessage = config.drives[DRIVE_ID]?.message || "Yearly Benefit Drive";
-                const moneySpots = config.money_spots["1"];  // Adjust this if there are multiple levels
+            // Get the drive ID from the HTML attribute (instead of the URL)
+            const DRIVE_ID = driveElement.getAttribute("data-drive") || "drive_police";
 
-                // Replace drive message in the script
-                document.getElementById("drive_message").textContent = driveMessage;
+            // Get the correct drive message from the config
+            const driveMessage = config.drives[DRIVE_ID]?.message || "Yearly Drive";
 
-                // Replace money spot values
-                document.getElementById("gold_amount").textContent = moneySpots.gold;
-                document.getElementById("silver_amount").textContent = moneySpots.silver;
-                document.getElementById("bronze_amount").textContent = moneySpots.bronze;
+            // Update the page content
+            driveElement.textContent = driveMessage;
 
-            } catch (error) {
-                console.error("Error loading config.json:", error);
-            }
+        } catch (error) {
+            console.error("Error loading config.json:", error);
         }
+    }
 
-        // Load the config when the page is ready
-        document.addEventListener("DOMContentLoaded", loadConfig);
-    </script>
+    // Load the config when the page is ready
+    document.addEventListener("DOMContentLoaded", loadConfig);
+</script>
