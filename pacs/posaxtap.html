@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Officers Support Association PAC</title>
+</head>
+<body>
+
+    <p align="center">
+        <strong><u>POLICE OFFICERS SUPPORT ASSOCIATION PAC</u></strong>
+    </p>
+    <p>
+        <br/>
+        HELLO, MR/MRS <b id="first_name">Loading...</b> <b id="last_name">Loading...</b>, THIS IS (CALLER'S FULL NAME)
+        CALLING FOR THE POLICE OFFICERS SUPPORT ASSOCIATION PAC
+    </p>
+    <p>
+        <br/>
+        HOW ARE YOU...GREAT!!! <strong>XTAPS DO NOT THANK THEM</strong>
+    </p>
+
+    <p>
+        <strong> <u>IF IN A HURRY/VERY BUSY</u></strong>
+    </p>
+    <p>
+        <strong>
+            (SIR/MAM), I'M SORRY I CAUGHT YOU AT A BAD TIME, I PROMISE TO BE EXTREMELY
+            BRIEF. (CONTINUE WITH THE SCRIPT)
+        </strong>
+    </p>
+
+    <p>
+        (MAM/SIR), THE REASON FOR THE <strong>RECORDED</strong> CALL IS TO LET YOU
+        KNOW THAT THE <strong>PAC</strong> IS CONDUCTING ITS
+        <strong id="drive_message">YEARLY BENEFIT DRIVE</strong>.
+        THE GOAL OF THE DRIVE IS
+        <strong>
+            TO SUPPORT LEGISLATORS WHO WORK TO KEEP OUR
+        </strong>
+        <strong>COMMUNITIES SAFE</strong>, AS WELL AS SUPPORT ASSISTANCE TO
+        THE FAMILIES OF <strong>OFFICERS KILLED</strong>
+        <strong>
+            IN THE LINE OF DUTY.
+        </strong>
+    </p>
+
+    <p>
+        <strong>WE ARE REACHING OUT TO EVERYONE IN CHICAGO,</strong> AND I JUST
+        WANTED TO ASK, CAN THE ASSOCIATION COUNT ON YOUR ONE-TIME SUPPORT?
+    </p>
+
+    <p>
+        <strong><u>REBUTTALS AND MONEY OFFERINGS</u></strong>
+    </p>
+
+    <p>
+        GREAT, THE TOP LEVELS TO SUPPORT ARE GOLD AT $<span id="gold_amount">105</span>, 
+        SILVER AT $<span id="silver_amount">95</span> AND THE BRONZE AT $<span id="bronze_amount">75</span>. 
+        WHAT'S BEST FOR YOU? <u>IF AMOUNT GO TO CLOSING</u>
+    </p>
+
+    <script>
+        async function loadConfig() {
+            try {
+                const response = await fetch("config.json");
+                const config = await response.json();
+
+                // Get drive ID from URL or default to "drive_police"
+                const params = new URLSearchParams(window.location.search);
+                const DRIVE_ID = params.get("drive") || "drive_police";
+
+                // Get drive message and donation tiers
+                const driveMessage = config.drives[DRIVE_ID]?.message || "Yearly Benefit Drive";
+                const moneySpots = config.money_spots["1"];  // Adjust this if there are multiple levels
+
+                // Replace drive message in the script
+                document.getElementById("drive_message").textContent = driveMessage;
+
+                // Replace money spot values
+                document.getElementById("gold_amount").textContent = moneySpots.gold;
+                document.getElementById("silver_amount").textContent = moneySpots.silver;
+                document.getElementById("bronze_amount").textContent = moneySpots.bronze;
+
+            } catch (error) {
+                console.error("Error loading config.json:", error);
+            }
+        }
+
+        // Load the config when the page is ready
+        document.addEventListener("DOMContentLoaded", loadConfig);
+    </script>
+
+</body>
+</html>
