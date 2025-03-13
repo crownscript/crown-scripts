@@ -1,5 +1,4 @@
-
-{
+const config = {
     "drives": {
         "drive_police": {
             "name": "Police Drive",
@@ -16,18 +15,5 @@
             "id": "drive_firefighters",
             "message": "Yearly Drive"
         }
-    },
-
-    "money_spots": {
-        "1": {
-            "gold": 105,
-            "silver": 95,
-            "bronze": 75
-        }
-    },
-
-    "rebuttals": {
-        "first_rebuttal_money": 45,
-        "second_rebuttal_money": 35
     }
-}
+};
