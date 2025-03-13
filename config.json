@@ -1,0 +1,33 @@
+
+{
+    "drives": {
+        "drive_police": {
+            "name": "Police Drive",
+            "id": "drive_police",
+            "message": "Support your local police officers this holiday season!"
+        },
+        "drive_pacs": {
+            "name": "PACs Drive",
+            "id": "drive_pacs",
+            "message": "Your donation helps us advocate for policies that matter!"
+        },
+        "drive_firefighters": {
+            "name": "Firefighters Drive",
+            "id": "drive_firefighters",
+            "message": "Help support our brave firefighters this holiday season!"
+        }
+    },
+
+    "money_spots": {
+        "1": {
+            "gold": 200,
+            "silver": 100,
+            "bronze": 50
+        }
+    },
+
+    "rebuttals": {
+        "first_rebuttal_money": 45,
+        "second_rebuttal_money": 35
+    }
+}
