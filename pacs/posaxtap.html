@@ -320,20 +320,8 @@
     <br/>
 </p>
 
-<script src="config.js"></script>  <!-- Ensure correct path -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        console.log("Checking config.js loading...");
-        console.log("CONFIG object:", CONFIG);  // Debugging
+<script src="config.seasonal.js"></script>  <!-- Ensure correct path -->
 
-        if (typeof getSeasonalMessage === "function") {
-            document.getElementById("seasonal-message").innerText = getSeasonalMessage();
-            console.log("Seasonal message set:", getSeasonalMessage());
-        } else {
-            console.error("getSeasonalMessage is not defined. Check config.js path.");
-        }
-    });
-</script>
 
 
 
