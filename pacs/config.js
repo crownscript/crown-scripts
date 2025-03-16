@@ -1,13 +1,5 @@
 const CONFIG = {
     seasonalMessage: "YEARLY DRIVE",  // Change this as needed
-};
-
-// Function to get the seasonal message dynamically
-function getSeasonalMessage() {
-    return CONFIG.seasonalMessage;
-}
-const CONFIG = {
-    seasonalMessage: "Join our yearly drive!",  // Change this as needed
 
     donationLevels: {
         gold: 105,
@@ -18,6 +10,11 @@ const CONFIG = {
         minimum: 25
     }
 };
+
+// Function to get the seasonal message dynamically
+function getSeasonalMessage() {
+    return CONFIG.seasonalMessage;
+}
 
 // Function to get donation levels
 function getDonationLevels() {
