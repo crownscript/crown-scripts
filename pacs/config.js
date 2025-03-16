@@ -6,4 +6,3 @@ const CONFIG = {
 function getSeasonalMessage() {
     return CONFIG.seasonalMessage;
 }
-
