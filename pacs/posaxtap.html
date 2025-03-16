@@ -321,33 +321,6 @@
 </p>
 
 
-<script src="/config.js"></script>
-
-
-<script>
-    async function loadConfig() {
-        try {
-            // Ensure config.js is loaded
-            if (!window.config) {
-                throw new Error("config.js not loaded");
-            }
-
-            // Get the drive ID from the HTML attribute
-            const driveElement = document.getElementById("drive_message");
-            const DRIVE_ID = driveElement.getAttribute("data-drive") || "drive_police";
-
-            // Get the drive message from config.js
-            const driveMessage = window.config.drives[DRIVE_ID]?.message || "Yearly Drive";
-
-            // Update the page content
-            driveElement.textContent = driveMessage;
-        } catch (error) {
-            console.error("Error loading config.js:", error);
-            document.getElementById("drive_message").textContent = "Error loading message";
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", loadConfig);
-</script>
+<script src="config.js?nocache=" + new Date().getTime()></script>
 
 
