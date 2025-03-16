@@ -323,12 +323,21 @@
 
 
 
-<script src="pacs/config.js"></script> <!-- Adjust path based on where config.js is located -->
+<script src="config.js"></script>
+
+<script src="pacs/config.js"></script>  <!-- Ensure correct path -->
 <script>
-    // Ensure the script runs after the page loads
-    window.onload = function () {
-        document.getElementById("seasonal-message").innerText = getSeasonalMessage();
-    };
+    document.addEventListener("DOMContentLoaded", function () {
+        console.log("Checking config.js loading...");
+        console.log("CONFIG object:", CONFIG);  // Debugging
+
+        if (typeof getSeasonalMessage === "function") {
+            document.getElementById("seasonal-message").innerText = getSeasonalMessage();
+            console.log("Seasonal message set:", getSeasonalMessage());
+        } else {
+            console.error("getSeasonalMessage is not defined. Check config.js path.");
+        }
+    });
 </script>
 
 
