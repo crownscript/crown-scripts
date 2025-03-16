@@ -1,5 +1,5 @@
 const CONFIG = {
-    seasonalMessage: "Join our yearly drive to support heroes!",  // Change this as needed
+    seasonalMessage: "Join our yearly drive ",  // Change this as needed
 };
 
 // Function to get the seasonal message dynamically
