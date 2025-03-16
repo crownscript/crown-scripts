@@ -323,8 +323,21 @@
 
 
 
-<script src="config.js"></script>
 
 
+
+<script src="pacs/config.js"></script>  <!-- Adjust path if needed -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof getSeasonalMessage === "function") {
+            document.getElementById("seasonal-message").innerText = getSeasonalMessage();
+        }
+
+        if (typeof getDonationLevels === "function") {
+            const levels = getDonationLevels();
+
+            document.getElementById("gold").innerText = `$${levels.gold}`;
+            document.getElementById("silver").innerText = `$${levels.silver}`;
+            document.get
 
 
