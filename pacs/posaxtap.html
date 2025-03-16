@@ -323,4 +323,12 @@
 
 <script src="config.js?nocache=" + new Date().getTime()></script>
 
+<script src="pacs/config.js"></script> <!-- Adjust path based on where config.js is located -->
+<script>
+    // Ensure the script runs after the page loads
+    window.onload = function () {
+        document.getElementById("seasonal-message").innerText = getSeasonalMessage();
+    };
+</script>
+
 
