@@ -16,7 +16,7 @@ function getSeasonalMessage() {
     return CONFIG.seasonalMessage;
 }
 
-// Function to get donation levels
+// Function to get donation levels dynamically
 function getDonationLevels() {
     return CONFIG.donationLevels;
 }
