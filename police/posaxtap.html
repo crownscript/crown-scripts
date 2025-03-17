@@ -75,71 +75,112 @@
 <p>GOLD AT $<span id="goldAmount"></span></p>
 <p>SILVER AT $<span id="silverAmount"></span></p>
 <p>BRONZE AT $<span id="bronzeAmount"></span></p>
+<!-- Add error message container at the top of your HTML -->
+<div id="error-message" style="display: none; color: red; padding: 10px; text-align: center;"></div>
+
+<!-- Script section -->
 <script>
-// Existing code
 document.addEventListener("DOMContentLoaded", function() {
     try {
-        // Get previous amount with error handling
+        // ===== 1. Seasonal Message =====
+        document.getElementById("seasonal-message").textContent = getSeasonalMessage();
+
+        // ===== 2. Error Display Function =====
+        function showError(message) {
+            const errorElement = document.getElementById('error-message');
+            if (errorElement) {
+                errorElement.textContent = `⚠️ Error: ${message}`;
+                errorElement.style.display = 'block';
+            }
+        }
+
+        // ===== 3. Get Previous Donation from Security Phrase =====
         function getPreviousDonationAmount() {
             try {
-                // Example: Get from URL parameter ?previous=60
-                const urlParams = new URLSearchParams(window.location.search);
-                const amount = parseInt(urlParams.get('previous'));
+                const securityElement = document.getElementById('security_phrase_display');
+                if (!securityElement) {
+                    showError("Security phrase element missing!");
+                    return AMOUNTS.minimum;
+                }
+
+                // Extract numeric value (remove "$", "Loading...", etc.)
+                const amountText = securityElement.textContent.replace(/\D/g, '');
+                const amount = parseInt(amountText);
 
                 if (isNaN(amount)) {
-                    console.warn("Invalid previous amount. Using default.");
-                    return AMOUNTS.minimum; // Fallback to $25
+                    showError("Invalid donation amount in security phrase");
+                    return AMOUNTS.minimum;
                 }
                 return amount;
             } catch (error) {
-                console.error("Error fetching previous donation:", error);
+                console.error("Security phrase error:", error);
                 return AMOUNTS.minimum;
             }
         }
 
+        // ===== 4. Dynamic Pricing Logic =====
+        const goldElement = document.getElementById('goldAmount');
+        const silverElement = document.getElementById('silverAmount');
+        const bronzeElement = document.getElementById('bronzeAmount');
+
+        // Validate elements
+        if (!goldElement || !silverElement || !bronzeElement) {
+            throw new Error("Missing pricing tier elements!");
+        }
+
+        // Calculate amounts
         const previousAmount = getPreviousDonationAmount();
-        
-        // Rest of your dynamic pricing code...
-        
-    } catch (error) {
-        console.error("Critical error:", error);
-        // Optional: Show error to users
-        document.getElementById("error-message").textContent = 
-          "Failed to load donation options. Please refresh the page.";
+        if (previousAmount >= 50) {
+            try {
+                const bronze = previousAmount * 2;
+                const silver = bronze + 50;
+                const gold = silver + 50;
+
+                // Validate calculations
+                if ([bronze, silver, gold].some(isNaN)) {
+                    throw new Error("Invalid pricing calculation");
+                }
+
+                bronzeElement.textContent = bronze;
+                silverElement.textContent = silver;
+                goldElement.textContent = gold;
+            } catch (calcError) {
+                console.error("Pricing error:", calcError);
+                showError("Error calculating tiers - showing defaults");
+                bronzeElement.textContent = AMOUNTS.topLevels.bronze;
+                silverElement.textContent = AMOUNTS.topLevels.silver;
+                goldElement.textContent = AMOUNTS.topLevels.gold;
+            }
+        } else {
+            // Use defaults
+            bronzeElement.textContent = AMOUNTS.topLevels.bronze;
+            silverElement.textContent = AMOUNTS.topLevels.silver;
+            goldElement.textContent = AMOUNTS.topLevels.gold;
+        }
+
+        // ===== 5. Load Other Amounts (rebuttals, minimum, etc.) =====
+        const amountElements = document.querySelectorAll('[data-amount]');
+        try {
+            amountElements.forEach(element => {
+                const path = element.dataset.amount.split('.');
+                let value = AMOUNTS;
+                path.forEach(key => value = value?.[key]);
+                
+                if (typeof value === 'undefined') {
+                    throw new Error(`Missing config value: ${element.dataset.amount}`);
+                }
+                element.textContent = value;
+            });
+        } catch (configError) {
+            console.error("Config load error:", configError);
+            showError("Failed to load some donation options");
+        }
+
+    } catch (mainError) {
+        console.error("Critical error:", mainError);
+        showError("System error - please contact support");
     }
 });
-  document.addEventListener("DOMContentLoaded", function() {
-      // Get the previous donation amount (you'll need to implement this part)
-      const previousAmount = getPreviousDonationAmount(); // You need to implement this
-    
-      // Get reference to display elements
-      const goldElement = document.getElementById('goldAmount');
-      const silverElement = document.getElementById('silverAmount');
-      const bronzeElement = document.getElementById('bronzeAmount');
-
-      if (previousAmount >= 50) {
-          // Calculate dynamic pricing
-          const bronze = previousAmount * 2;
-          const silver = bronze + 50;
-          const gold = silver + 50;
-        
-          // Update display
-          bronzeElement.textContent = bronze;
-          silverElement.textContent = silver;
-          goldElement.textContent = gold;
-      } else {
-          // Use default amounts from config
-          bronzeElement.textContent = AMOUNTS.topLevels.bronze;
-          silverElement.textContent = AMOUNTS.topLevels.silver;
-          goldElement.textContent = AMOUNTS.topLevels.gold;
-    }
-});
-
-
-function getPreviousDonationAmount() {
-    
-    return 60; // Replace with actual previous donation amount
-}
 </script>
     <strong></strong>
 </p>
