@@ -8,6 +8,6 @@ const AMOUNTS = {
     rebuttals: {
     level1: 45,
     level2: 35
-  }],  
+  },  
     minimum: 25
 };
