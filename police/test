@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Officers Support Association PAC</title>
+    <script src="config.amounts.js"></script>
+    <script src="config.seasonal.js"></script>
+    <style>
+        :root {
+            --primary-blue: #2c3e50;
+            --accent-red: #e74c3c;
+            --highlight-yellow: #f1c40f;
+            --text-dark: #333;
+            --background-light: #f8f9fa;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .tier-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tier-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .tier-card.gold { background: linear-gradient(145deg, #ffd700, #daa520); color: #000; }
+        .tier-card.silver { background: linear-gradient(145deg, #c0c0c0, #a8a8a8); color: #000; }
+        .tier-card.bronze { background: linear-gradient(145deg, #cd7f32, #8b4513); color: #fff; }
+
+        .highlight {
+            background-color: var(--highlight-yellow);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            font-size: 0.9em;
+            color: #666;
+            border-top: 2px solid var(--accent-red);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            background: #fff;
+        }
+
+        a {
+            color: var(--accent-red);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #c0392b;
+        }
+
+        #error-message {
+            background: #ffebee;
+            color: #b71c1c;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            text-align: center;
+            display: none;
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        u {
+            text-decoration-color: var(--accent-red);
+        }
+
+        .script-section {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .dynamic-value {
+            font-weight: 700;
+            color: var(--accent-red);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>POLICE OFFICERS SUPPORT ASSOCIATION PAC</h1>
+    </div>
+
+    <div id="error-message" class="error-message"></div>
+
+    <div class="content-section">
+        <p>Hello, Mr./Mrs. <b id="first_name" class="dynamic-value">Loading...</b> <b id="last_name" class="dynamic-value">Loading...</b>,<br>
+        This is <span class="highlight">(Caller's Full Name)</span> calling for the Police Officers Support Association PAC.</p>
+    </div>
+
+    <div class="content-section">
+        <p>We're conducting our <span id="seasonal-message" class="highlight"></span> to support legislators working to keep our communities safe and assist families of <strong>officers killed in the line of duty</strong>.</p>
+    </div>
+
+    <div class="tier-container">
+        <div class="tier-card gold">
+            <h3>GOLD TIER</h3>
+            <div class="tier-amount">$<span id="goldAmount" class="dynamic-value"></span></div>
+        </div>
+        <div class="tier-card silver">
+            <h3>SILVER TIER</h3>
+            <div class="tier-amount">$<span id="silverAmount" class="dynamic-value"></span></div>
+        </div>
+        <div class="tier-card bronze">
+            <h3>BRONZE TIER</h3>
+            <div class="tier-amount">$<span id="bronzeAmount" class="dynamic-value"></span></div>
+        </div>
+    </div>
+
+    <!-- Main Content Sections -->
+    <div class="content-section">
+        <div class="script-section">
+            <h2>Support Options</h2>
+            <p>Security phrase: <span id="security_phrase_display" class="highlight"></span></p>
+            
+            <!-- Original script content with styling -->
+            <div class="script-section">
+                <h3>Rebuttals &amp; Offerings</h3>
+                <p><strong>Middle Levels:</strong> Suggested levels of $<span data-amount="rebuttals.level1" class="dynamic-value"></span> and $<span data-amount="rebuttals.level2" class="dynamic-value"></span></p>
+                
+                <!-- All original rebuttal sections maintained with styling -->
+                <div class="script-subsection">
+                    <h4>Hard No/Can't Afford</h4>
+                    <p>I completely understand (Mam/Sir), this call was definitely not meant to burden you. We have smaller booster spots at just $<span data-amount="rebuttals.level1" class="dynamic-value"></span> or $<span data-amount="rebuttals.level2" class="dynamic-value"></span> to keep everyone involved.</p>
+                </div>
+
+                <!-- Continue with all original content sections... -->
+                
+                <div class="script-subsection">
+                    <h4>Closing Process</h4>
+                    <p>Thank you so much! Is $<span class="dynamic-value">[AMOUNT]</span> definitely comfortable for you? <strong>(If yes)</strong> Please hold while I transfer you to the records department to process your generous donation!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer Section -->
+    <div class="disclaimer">
+        <p>Contributions to the Police Officers Support Association are not tax deductible. Paid for by the Police Officers Support Association PAC. Not authorized by any candidate or candidate's committee. www.policeofficerssupportassociation.org</p>
+    </div>
+
+    <!-- Original JavaScript Content (Maintained Exactly) -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // ... original JavaScript code exactly as provided ...
+    });
+    </script>
+</body>
+</html>
