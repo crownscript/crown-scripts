@@ -76,30 +76,30 @@
 <p>SILVER AT $<span id="silverAmount"></span></p>
 <p>BRONZE AT $<span id="bronzeAmount"></span></p>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Get the previous donation amount (you'll need to implement this part)
-    const previousAmount = getPreviousDonationAmount(); // You need to implement this
+  document.addEventListener("DOMContentLoaded", function() {
+      // Get the previous donation amount (you'll need to implement this part)
+      const previousAmount = getPreviousDonationAmount(); // You need to implement this
     
-    // Get reference to display elements
-    const goldElement = document.getElementById('goldAmount');
-    const silverElement = document.getElementById('silverAmount');
-    const bronzeElement = document.getElementById('bronzeAmount');
+      // Get reference to display elements
+      const goldElement = document.getElementById('goldAmount');
+      const silverElement = document.getElementById('silverAmount');
+      const bronzeElement = document.getElementById('bronzeAmount');
 
-    if (previousAmount >= 50) {
-        // Calculate dynamic pricing
-        const bronze = previousAmount * 2;
-        const silver = bronze + 50;
-        const gold = silver + 50;
+      if (previousAmount >= 50) {
+          // Calculate dynamic pricing
+          const bronze = previousAmount * 2;
+          const silver = bronze + 50;
+          const gold = silver + 50;
         
-        // Update display
-        bronzeElement.textContent = bronze;
-        silverElement.textContent = silver;
-        goldElement.textContent = gold;
-    } else {
-        // Use default amounts from config
-        bronzeElement.textContent = AMOUNTS.topLevels.bronze;
-        silverElement.textContent = AMOUNTS.topLevels.silver;
-        goldElement.textContent = AMOUNTS.topLevels.gold;
+          // Update display
+          bronzeElement.textContent = bronze;
+          silverElement.textContent = silver;
+          goldElement.textContent = gold;
+      } else {
+          // Use default amounts from config
+          bronzeElement.textContent = AMOUNTS.topLevels.bronze;
+          silverElement.textContent = AMOUNTS.topLevels.silver;
+          goldElement.textContent = AMOUNTS.topLevels.gold;
     }
 });
 
