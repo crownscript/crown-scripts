@@ -69,10 +69,17 @@
 <p>GOLD AT $<span data-amount="topLevels.gold"></span></p>
 <p>SILVER AT $<span data-amount="topLevels.silver"></span></p>
 <p>BRONZE AT $<span data-amount="topLevels.bronze"></span></p>
-    <strong>
-    </strong>
-</p>
-<p>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Replace all amounts using the config
+    const amountElements = document.querySelectorAll('[data-amount]');
+    
+    amountElements.forEach(element => {
+        const amountType = element.dataset.amount;
+        element.textContent = AMOUNTS[amountType];
+    });
+});
+</script>
     <strong></strong>
 </p>
 <p>
