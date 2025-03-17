@@ -5,9 +5,9 @@ const AMOUNTS = {
         silver: 95,
         bronze: 75
     },
-    rebuttals: {
-    level1: 45,
-    level2: 35
-  },  
+    rebuttals: { 
+        level1: 45,
+        level2: 35
+    },
     minimum: 25
 };
