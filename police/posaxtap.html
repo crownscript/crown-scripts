@@ -72,20 +72,45 @@
 <p>
     GREAT, THE TOP LEVELS TO SUPPORT ARE
 </p>
-<p>GOLD AT $<span data-amount="topLevels.gold"></span></p>
-<p>SILVER AT $<span data-amount="topLevels.silver"></span></p>
-<p>BRONZE AT $<span data-amount="topLevels.bronze"></span></p>
-<script>
+<p>GOLD AT $<span id="goldAmount"></span></p>
+<p>SILVER AT $<span id="silverAmount"></span></p>
+<p>BRONZE AT $<span id="bronzeAmount"></span></p>
+
 document.addEventListener("DOMContentLoaded", function() {
-    // Replace all amounts using the config
-    const amountElements = document.querySelectorAll('[data-amount]');
+    // Get the previous donation amount (you'll need to implement this part)
+    const previousAmount = getPreviousDonationAmount(); // You need to implement this
     
-    amountElements.forEach(element => {
-        const amountType = element.dataset.amount;
-        element.textContent = AMOUNTS[amountType];
-    });
+    // Get reference to display elements
+    const goldElement = document.getElementById('goldAmount');
+    const silverElement = document.getElementById('silverAmount');
+    const bronzeElement = document.getElementById('bronzeAmount');
+
+    if (previousAmount >= 50) {
+        // Calculate dynamic pricing
+        const bronze = previousAmount * 2;
+        const silver = bronze + 50;
+        const gold = silver + 50;
+        
+        // Update display
+        bronzeElement.textContent = bronze;
+        silverElement.textContent = silver;
+        goldElement.textContent = gold;
+    } else {
+        // Use default amounts from config
+        bronzeElement.textContent = AMOUNTS.topLevels.bronze;
+        silverElement.textContent = AMOUNTS.topLevels.silver;
+        goldElement.textContent = AMOUNTS.topLevels.gold;
+    }
 });
-</script>
+
+// You'll need to implement this function based on your data source
+function getPreviousDonationAmount() {
+    // Example implementation if amount is stored in a data attribute:
+    // return parseInt(document.getElementById('previousDonation').dataset.amount);
+    
+    // Temporary example value - replace with actual implementation
+    return 60; // Replace with actual previous donation amount
+}
     <strong></strong>
 </p>
 <p>
