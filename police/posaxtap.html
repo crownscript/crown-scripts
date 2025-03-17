@@ -75,7 +75,7 @@
 <p>GOLD AT $<span id="goldAmount"></span></p>
 <p>SILVER AT $<span id="silverAmount"></span></p>
 <p>BRONZE AT $<span id="bronzeAmount"></span></p>
-
+<script>
 document.addEventListener("DOMContentLoaded", function() {
     // Get the previous donation amount (you'll need to implement this part)
     const previousAmount = getPreviousDonationAmount(); // You need to implement this
@@ -103,14 +103,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// You'll need to implement this function based on your data source
+
 function getPreviousDonationAmount() {
-    // Example implementation if amount is stored in a data attribute:
-    // return parseInt(document.getElementById('previousDonation').dataset.amount);
     
-    // Temporary example value - replace with actual implementation
     return 60; // Replace with actual previous donation amount
 }
+</script>
     <strong></strong>
 </p>
 <p>
