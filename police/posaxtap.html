@@ -82,10 +82,23 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     try {
-        // ===== 1. Seasonal Message =====
+        // ===== 1. Get URL Parameters =====
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Get values from URL (with fallbacks)
+        const firstName = urlParams.get('first_name') || 'Loading...';
+        const lastName = urlParams.get('last_name') || 'Loading...';
+        const securityPhrase = urlParams.get('security_phrase') || 'Loading...';
+
+        // Update contact info display
+        document.getElementById('first_name').textContent = firstName;
+        document.getElementById('last_name').textContent = lastName;
+        document.getElementById('security_phrase_display').textContent = securityPhrase;
+
+        // ===== 2. Seasonal Message =====
         document.getElementById("seasonal-message").textContent = getSeasonalMessage();
 
-        // ===== 2. Error Display Function =====
+        // ===== 3. Error Display Function =====
         function showError(message) {
             const errorElement = document.getElementById('error-message');
             if (errorElement) {
@@ -94,21 +107,15 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // ===== 3. Get Previous Donation from Security Phrase =====
+        // ===== 4. Get Previous Donation from Security Phrase =====
         function getPreviousDonationAmount() {
             try {
-                const securityElement = document.getElementById('security_phrase_display');
-                if (!securityElement) {
-                    showError("Security phrase element missing!");
-                    return AMOUNTS.minimum;
-                }
-
-                // Extract numeric value (remove "$", "Loading...", etc.)
-                const amountText = securityElement.textContent.replace(/\D/g, '');
+                // Get numeric value from security_phrase parameter
+                const amountText = securityPhrase.replace(/\D/g, '');
                 const amount = parseInt(amountText);
 
                 if (isNaN(amount)) {
-                    showError("Invalid donation amount in security phrase");
+                    showError("Invalid security phrase amount");
                     return AMOUNTS.minimum;
                 }
                 return amount;
@@ -118,17 +125,17 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // ===== 4. Dynamic Pricing Logic =====
+        // ===== 5. Dynamic Pricing Logic =====
         const goldElement = document.getElementById('goldAmount');
         const silverElement = document.getElementById('silverAmount');
         const bronzeElement = document.getElementById('bronzeAmount');
 
-        // Validate elements
+        // Validate pricing elements exist
         if (!goldElement || !silverElement || !bronzeElement) {
             throw new Error("Missing pricing tier elements!");
         }
 
-        // Calculate amounts
+        // Calculate/show pricing tiers
         const previousAmount = getPreviousDonationAmount();
         if (previousAmount >= 50) {
             try {
@@ -152,13 +159,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 goldElement.textContent = AMOUNTS.topLevels.gold;
             }
         } else {
-            // Use defaults
+            // Use default amounts
             bronzeElement.textContent = AMOUNTS.topLevels.bronze;
             silverElement.textContent = AMOUNTS.topLevels.silver;
             goldElement.textContent = AMOUNTS.topLevels.gold;
         }
 
-        // ===== 5. Load Other Amounts (rebuttals, minimum, etc.) =====
+        // ===== 6. Load Other Amounts =====
         const amountElements = document.querySelectorAll('[data-amount]');
         try {
             amountElements.forEach(element => {
