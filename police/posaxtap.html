@@ -3,72 +3,67 @@
 
 
 <style>
-.pac-header {
-    text-align: center;
-    margin: 2rem 0;
-    font-family: 'Arial', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    background-color: #f0f0f0;  /* Light gray background */
-    padding: 1.5rem;           /* Add internal spacing */
-    border-radius: 8px;        /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+/* Section Styling */
+.content-block {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #dee2e6;
 }
 
-.main-title {
-    font-size: 2.2rem;
-    font-weight: 700;
+.section-header {
     color: #2c3e50;
-    display: block;
-    line-height: 1.2;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
-.pac-badge {
-    font-size: 1.8rem;
-    color: #c00;
-    display: block;
-    margin-top: 0.5rem;
-    font-weight: 600;
-    letter-spacing: 2px;
+.highlight {
+    background-color: #fff3cd;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.script-instruction {
+    color: #6c757d;
+    font-style: italic;
+    margin: 0.5rem 0;
 }
 </style>
 
-<div class="pac-header">
-    <span class="main-title">POLICE OFFICERS SUPPORT ASSOCIATION</span>
-    <span class="pac-badge">PAC</span>
+<!-- Header Section -->
+<div class="content-block" style="background: #e9ecef; text-align: center;">
+    <h1>POLICE OFFICERS SUPPORT ASSOCIATION PAC</h1>
 </div>
-<p>
-    <br/>
-    HELLO,MR/MRS <b id="first_name">Loading...</b> <b id="last_name">Loading...</b> THIS IS (CALLERS FULL NAME)
-    CALLING  FOR THE POLICE OFFICERS SUPPORT ASSOCIATION PAC
-</p>
-<p>
-    <br/>
-    HOW ARE YOU...GREAT!!! <strong>XTAPS DO NOT THANK THEM</strong>
-</p>
-<p>
-    <strong></strong>
-</p>
-<p>
-    <strong> <u>IF IN A HURRY/VERY BUSY</u></strong>
-</p>
-<p>
-    <strong>
-        (SIR/MAM)  IM SORRY I CAUGHT YOU AT A BAD TIME I PROMISE TO BE EXTREMELY
-        BRIEF. (CONTINUE  WITH THE SCRIPT)
-    </strong>
-</p>
-<p>
-    <strong></strong>
-</p>
-<p>
-  (MAM/SIR) THE REASON FOR THE <strong>RECORDED</strong> CALL IS TO LET YOU
-  KNOW THAT THE <strong>PAC</strong> IS CONDUCTING ITS 
-  <span id="seasonal-message"></span> TO SUPPORT LEGISLATORS WHO WORK TO KEEP OUR
-  <strong>COMMUNITIES SAFE</strong>, AS WELL AS SUPPORT ASSISTANCE TO
-  THE FAMILIES OF <strong>OFFICERS KILLED</strong> IN THE LINE OF DUTY.
-</p>
-   <script>
+
+<!-- Greeting Section -->
+<div class="content-block">
+    <p>Hello, Mr./Mrs. <b id="first_name">Loading...</b> <b id="last_name">Loading...</b>,<br>
+    This is <span class="highlight">(Caller's Full Name)</span> calling for the Police Officers Support Association PAC.</p>
+</div>
+
+<!-- Script Section -->
+<div class="content-block">
+    <div class="section-header">CALL OPENING</div>
+    <p class="script-instruction">HOW ARE YOU...GREAT!!! <strong>XTAPS DO NOT THANK THEM</strong></p>
+    
+    <div class="section-header">IF IN A HURRY/VERY BUSY</div>
+    <p><strong>(SIR/MAM) IM SORRY I CAUGHT YOU AT A BAD TIME I PROMISE TO BE EXTREMELY BRIEF.<br>
+    (CONTINUE WITH THE SCRIPT)</strong></p>
+</div>
+
+<!-- Main Message Section -->
+<div class="content-block">
+    <div class="section-header">PRIMARY MESSAGE</div>
+    <p>(MAM/SIR) THE REASON FOR THE <strong>RECORDED</strong> CALL IS TO LET YOU KNOW THAT THE <strong>PAC</strong> IS CONDUCTING ITS 
+    <span id="seasonal-message" class="highlight"></span> TO SUPPORT LEGISLATORS WHO WORK TO KEEP OUR 
+    <strong>COMMUNITIES SAFE</strong>, AS WELL AS SUPPORT ASSISTANCE TO THE FAMILIES OF <strong>OFFICERS KILLED</strong> IN THE LINE OF DUTY.</p>
+</div>
   document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("seasonal-message").innerHTML = getSeasonalMessage();
   });
