@@ -1,3 +1,6 @@
+<script src="config.amounts.js"></script>
+<script src="config.seasonal.js"></script>
+
 <p align="center">
     <strong><u>POLICE OFFICERS SUPPORT ASSOCIATION  PAC</u></strong>
 </p>
@@ -336,13 +339,24 @@ document.addEventListener("DOMContentLoaded", function() {
     <br/>
     <br/>
 </p>
-<script src="config.amounts.js"></script>
-<script src="config.seasonal.js"></script>  <!-- Ensure correct path -->
+
+
 <script>
+  // Seasonal message
   document.getElementById("seasonal-message").textContent = getSeasonalMessage();
+  
+  // Amounts loader
+  document.addEventListener("DOMContentLoaded", function() {
+    const amountElements = document.querySelectorAll('[data-amount]');
+    
+    amountElements.forEach(element => {
+      const path = element.dataset.amount.split('.');
+      let value = AMOUNTS;
+      path.forEach(key => value = value[key]);
+      element.textContent = value;
+    });
+  });
 </script>
-
-
 
 
 
