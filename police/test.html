@@ -3,100 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Police Officers Support Association PAC</title>
-    <script src="config.amounts.js"></script>
-    <script src="config.seasonal.js"></script>
+    <title>Police Officers Support Association PAC Script</title>
     <style>
-        :root {
-            --primary-blue: #2c3e50;
-            --accent-red: #e74c3c;
-            --highlight-yellow: #f1c40f;
-            --text-dark: #333;
-            --background-light: #f8f9fa;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--background-light);
+            font-family: Arial, sans-serif;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            line-height: 1.5;
         }
 
         .header {
             text-align: center;
-            padding: 2rem;
-            background-color: var(--primary-blue);
-            color: white;
-            border-radius: 8px;
             margin-bottom: 2rem;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 1rem;
         }
 
-        .content-block {
-            background: white;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .tier-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+        .section {
             margin: 2rem 0;
         }
 
-        .tier-card {
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .tier-card.gold { background: #ffd700; color: #000; }
-        .tier-card.silver { background: #c0c0c0; color: #000; }
-        .tier-card.bronze { background: #cd7f32; color: #000; }
-
-        .dynamic-value {
+        .section-header {
+            color: #2c3e50;
             font-weight: bold;
-            color: var(--accent-red);
+            border-bottom: 1px solid #e74c3c;
+            margin: 1.5rem 0;
+            padding-bottom: 0.5rem;
         }
 
-        .highlight {
-            background-color: var(--highlight-yellow);
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
+        .script-text {
+            margin: 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid #dee2e6;
         }
 
-        .disclaimer {
-            font-size: 0.9em;
-            color: #666;
-            border-top: 2px solid var(--accent-red);
-            padding-top: 1rem;
-            margin-top: 2rem;
+        .response {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .emphasis {
+            color: #c00;
+            font-weight: bold;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .question {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 1.5rem;
         }
 
         a {
-            color: var(--accent-red);
+            color: #e74c3c;
             text-decoration: none;
         }
 
         a:hover {
             text-decoration: underline;
-        }
-
-        #error-message {
-            background: #ffebee;
-            color: #b71c1c;
-            padding: 1rem;
-            border-radius: 4px;
-            margin: 1rem 0;
-            text-align: center;
-            display: none;
         }
     </style>
 </head>
@@ -105,75 +75,60 @@
         <h1>POLICE OFFICERS SUPPORT ASSOCIATION PAC</h1>
     </div>
 
-    <div id="error-message" class="error-message"></div>
-
-    <div class="content-block">
-        <p>Hello, Mr./Mrs. <b id="first_name" class="dynamic-value">Loading...</b> <b id="last_name" class="dynamic-value">Loading...</b>,<br>
-        This is <span class="highlight">(Caller's Full Name)</span> calling for the Police Officers Support Association PAC.</p>
-    </div>
-
-    <!-- All original content preserved with styling -->
-    <div class="content-block">
-        <p>HOW ARE YOU...GREAT!!! <strong>XTAPS DO NOT THANK THEM</strong></p>
+    <div class="section">
+        <div class="section-header">OPENING GREETING</div>
+        <p>HELLO, MR/MRS <span class="emphasis">JOHN PUBLIC</span> THIS IS (CALLER'S FULL NAME) CALLING FOR THE<br>
+        POLICE OFFICERS SUPPORT ASSOCIATION PAC</p>
         
-        <p><strong><u>IF IN A HURRY/VERY BUSY</u></strong></p>
-        <p><strong>(SIR/MAM) IM SORRY I CAUGHT YOU AT A BAD TIME I PROMISE TO BE EXTREMELY BRIEF. (CONTINUE WITH THE SCRIPT)</strong></p>
-        
-        <p>(MAM/SIR) THE REASON FOR THE <strong>RECORDED</strong> CALL IS TO LET YOU KNOW THAT THE <strong>PAC</strong> IS CONDUCTING ITS 
-        <span id="seasonal-message" class="highlight"></span> TO SUPPORT LEGISLATORS WHO WORK TO KEEP OUR 
-        <strong>COMMUNITIES SAFE</strong>, AS WELL AS SUPPORT ASSISTANCE TO THE FAMILIES OF <strong>OFFICERS KILLED</strong> IN THE LINE OF DUTY.</p>
-    </div>
-
-    <div class="tier-container">
-        <div class="tier-card gold">
-            <h3>GOLD</h3>
-            $<span id="goldAmount" class="dynamic-value"></span>
-        </div>
-        <div class="tier-card silver">
-            <h3>SILVER</h3>
-            $<span id="silverAmount" class="dynamic-value"></span>
-        </div>
-        <div class="tier-card bronze">
-            <h3>BRONZE</h3>
-            $<span id="bronzeAmount" class="dynamic-value"></span>
+        <div class="script-text">
+            <p>HOW ARE YOU...GREAT!!! <span class="emphasis">XTAPS DO NOT THANK THEM</span></p>
         </div>
     </div>
 
-    <!-- All rebuttal sections preserved -->
-    <div class="content-block">
-        <p><strong><u>REBUTTALS AND MONEY OFFERINGS</u></strong></p>
-        <p>If YES...<b>REMEMBER TO MAXIMIZE LEAD <span class="highlight" id="security_phrase_display">Loading...</span></b></p>
-        
-        <p>GREAT, THE TOP LEVELS TO SUPPORT ARE</p>
-        
-        <!-- Middle Levels Section -->
-        <div class="content-block">
-            <h3>MIDDLE LEVELS</h3>
-            <p>Suggested levels: $<span data-amount="rebuttals.level1" class="dynamic-value"></span> and $<span data-amount="rebuttals.level2" class="dynamic-value"></span></p>
-            <p>WELL MAM/SIR, ITS NOT ABOUT HOW MUCH YOU GIVE, OKAY? AND OUR OFFICERS DEFINITELY NEED YOUR GENEROUS SUPPORT! THEY DO HAVE SUGGESTED LEVELS OF $65 AND $55 JUST ONE TIME FOR THIS DRIVE. WHAT'S COMFORTABLE FOR YOU?</p>
-        </div>
-
-        <!-- All other rebuttal sections... -->
-        
-        <!-- Minimum Support -->
-        <div class="content-block">
-            <h3>MINIMUM SUPPORT</h3>
-            <p>Minimum donation: $<span data-amount="minimum" class="dynamic-value"></span></p>
-            <p>WELL LET ME ASK YOU THIS. THE MINIMUM DONATION FOR THE DRIVE IS ONLY $<span data-amount="minimum" class="dynamic-value"></span> CAN THEY COUNT ON YOU FOR AT LEAST $<span data-amount="minimum" class="dynamic-value"></span> JUST THIS ONE TIME?</p>
+    <div class="section">
+        <div class="section-header underline">IF IN A HURRY/VERY BUSY</div>
+        <div class="response">
+            <p>(SIR/MAM) I'M SORRY I CAUGHT YOU AT A BAD TIME I PROMISE TO BE EXTREMELY BRIEF.<br>
+            (CONTINUE WITH THE SCRIPT)</p>
         </div>
     </div>
 
-    <!-- Disclaimer Section -->
-    <div class="disclaimer">
-        <p>GIFTS AND DONATIONS MADE TO THE POLICE OFFICERS SUPPORT ASSOCIATION ARE NOT TAX DEDUCTIBLE. THIS CALL HAS BEEN PAID FOR BY THE POLICE OFFICERS SUPPORT ASSOCIATION. WWW.POLICEOFFICERSSUPPORTASSOCIATION.ORG. NOT AUTHORIZED BY ANY CANDIDATE OR CANDIDATES COMMITTEE.</p>
+    <div class="section">
+        <div class="section-header underline">REBUTTALS AND MONEY OFFERINGS</div>
+        <div class="response">
+            <p>IF YES PITCH TOP SPOTS...REMEMBER TO MAXIMIZE LEAD (SECURITY)</p>
+            <p class="emphasis">GOLD AT $105 • SILVER AT $95 • BRONZE AT $75</p>
+        </div>
     </div>
 
-    <!-- Original JavaScript Preserved -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Original JavaScript code exactly as provided
-        // ... [Full original script content] ...
-    });
-    </script>
+    <div class="section">
+        <div class="section-header">CLOSING</div>
+        <div class="response">
+            <p>THANK YOU SO MUCH AND IS THE ($AMOUNT$) DEFINITELY COMFORTABLE FOR YOU?<br>
+            <span class="emphasis">(IF YES)</span> PLEASE HOLD WHILE I TRANSFER YOU TO RECORDS DEPARTMENT!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header underline">DISCLOSURE</div>
+        <div class="response" style="background: #fff3cd;">
+            <p>GIFTS AND DONATIONS MADE TO THE POLICE OFFICERS SUPPORT ASSOCIATION ARE NOT TAX DEDUCTIBLE.<br>
+            PAID FOR BY POLICE OFFICERS SUPPORT ASSOCIATION PAC<br>
+            WWW.POLICEOFFICERSSUPPORTASSOCIATION.ORG</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header underline">QUESTION & RESPONSE</div>
+        
+        <div class="question">WHAT IS THE POLICE OFFICERS SUPPORT ASSOCIATION?</div>
+        <p>THE POLICE OFFICERS SUPPORT ASSOCIATION IS A PROJECT OF A FEDERAL POLITICAL COMMITTEE...</p>
+
+        <div class="question">ARE YOU A MEMBER OF THE ORGANIZATION?</div>
+        <p>NO I WORK FOR A COMPANY HIRED TO CONDUCT THESE CALLS...</p>
+
+        <div class="question">BAILOUT (UNKNOWN QUESTIONS)</div>
+        <p>YOU KNOW THAT'S A REALLY GOOD QUESTION... CALL <a href="tel:866-434-3079">866-434-3079</a></p>
+    </div>
 </body>
 </html>
