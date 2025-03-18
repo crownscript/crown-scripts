@@ -91,6 +91,18 @@
        .content-block h4 + p {
        margin-top: 0 !important;
 }
+/* Target the header container */
+.content-block[style*="background: #e9ecef"] {
+  padding: 0 !important; /* Remove internal padding */
+  margin: 0 !important; /* Remove external margins */
+}
+
+/* Target the header text */
+.content-block h2, .content-block h3 {
+  margin: 0 !important; /* Remove default heading margins */
+  padding: 5px 0 !important; /* Minimal vertical padding */
+  line-height: 1 !important; /* Remove spacing between lines */
+}
     </style>
 </head>
 <body>
