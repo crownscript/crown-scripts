@@ -7,7 +7,7 @@
     <script src="config.amounts.js"></script>
     <script src="config.seasonal.js"></script>
     <style>
-        
+        /*establishes style rules for the whole script*/
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -17,7 +17,7 @@
             padding: 20px;
         }
 
-        
+        /*makes the boxes*/
         .content-block {
             background: #f8f9fa;
             border-radius: 8px;
@@ -26,7 +26,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             border: 1px solid #dee2e6;
         }
-
+        /*the lines i use to seperape parts of the script*/
         .section-header {
             color: #2c3e50;
             border-bottom: 2px solid #e74c3c;
@@ -36,27 +36,27 @@
             font-weight: 600;
         }
 
-        /* Dynamic Elements */
+        /* used to highlight the disclosure box */
         .highlight {
             background-color: #fff3cd;
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
             font-weight: 600;
         }
-
+         /*highlights money spots*/
         .dynamic-value {
             color: #c00;
             font-weight: bold;
         }
 
-        /* Tiers Display */
+        /* top spot boxes */
         .tier-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin: 2rem 0;
         }
-
+        /*sperates the top spot boxes into 3 different ones */
         .tier-card {
             padding: 1rem;
             border-radius: 8px;
