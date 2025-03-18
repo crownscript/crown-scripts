@@ -74,13 +74,109 @@
 <p>BRONZE AT $<span data-amount="topLevels.bronze"></span></p>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Replace all amounts using the config
-    const amountElements = document.querySelectorAll('[data-amount]');
-    
-    amountElements.forEach(element => {
-        const amountType = element.dataset.amount;
-        element.textContent = AMOUNTS[amountType];
-    });
+    try {
+        // ===== 1. Utility Functions =====
+        const roundToNearest5 = (num) => Math.round(num / 5) * 5;
+        const formatCurrency = (num) => num.toLocaleString('en-US');
+
+        // ===== 2. URL Parameter Handling =====
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Get values from URL
+        document.getElementById('first_name').textContent = urlParams.get('first_name') || 'Loading...';
+        document.getElementById('last_name').textContent = urlParams.get('last_name') || 'Loading...';
+        document.getElementById('security_phrase_display').textContent = urlParams.get('security_phrase') || 'Loading...';
+
+        // ===== 3. Seasonal Message =====
+        document.getElementById("seasonal-message").textContent = getSeasonalMessage();
+
+        // ===== 4. Error Handling =====
+        function showError(message) {
+            const errorElement = document.getElementById('error-message');
+            if (errorElement) {
+                errorElement.textContent = `⚠️ Error: ${message}`;
+                errorElement.style.display = 'block';
+            }
+        }
+
+        // ===== 5. Donation Amount Logic =====
+        function getPreviousDonationAmount() {
+            try {
+                const securityPhrase = urlParams.get('security_phrase') || '';
+                const amount = parseInt(securityPhrase.replace(/\D/g, ''));
+                
+                if (isNaN(amount)) {
+                    showError("Invalid security phrase amount");
+                    return AMOUNTS.minimum;
+                }
+                return amount;
+            } catch (error) {
+                console.error("Security phrase error:", error);
+                return AMOUNTS.minimum;
+            }
+        }
+
+        // ===== 6. Dynamic Pricing with Rounding =====
+        const goldElement = document.getElementById('goldAmount');
+        const silverElement = document.getElementById('silverAmount');
+        const bronzeElement = document.getElementById('bronzeAmount');
+
+        if (!goldElement || !silverElement || !bronzeElement) {
+            throw new Error("Missing pricing elements!");
+        }
+
+        const previousAmount = getPreviousDonationAmount();
+        if (previousAmount >= 50) {
+            try {
+                // Calculate and round tiers
+                const bronze = roundToNearest5(previousAmount * 2);
+                const silver = roundToNearest5(bronze + 50);
+                const gold = roundToNearest5(silver + 50);
+
+                // Validate
+                if ([bronze, silver, gold].some(isNaN)) {
+                    throw new Error("Invalid calculation");
+                }
+
+                // Format with commas (e.g., 1000 → 1,000)
+                bronzeElement.textContent = formatCurrency(bronze);
+                silverElement.textContent = formatCurrency(silver);
+                goldElement.textContent = formatCurrency(gold);
+            } catch (calcError) {
+                console.error("Pricing error:", calcError);
+                showError("Error calculating tiers - showing defaults");
+                bronzeElement.textContent = formatCurrency(AMOUNTS.topLevels.bronze);
+                silverElement.textContent = formatCurrency(AMOUNTS.topLevels.silver);
+                goldElement.textContent = formatCurrency(AMOUNTS.topLevels.gold);
+            }
+        } else {
+            bronzeElement.textContent = formatCurrency(AMOUNTS.topLevels.bronze);
+            silverElement.textContent = formatCurrency(AMOUNTS.topLevels.silver);
+            goldElement.textContent = formatCurrency(AMOUNTS.topLevels.gold);
+        }
+
+        // ===== 7. Load Other Amounts =====
+        const amountElements = document.querySelectorAll('[data-amount]');
+        try {
+            amountElements.forEach(element => {
+                const path = element.dataset.amount.split('.');
+                let value = AMOUNTS;
+                path.forEach(key => value = value?.[key]);
+                
+                if (typeof value === 'undefined') {
+                    throw new Error(`Missing config: ${element.dataset.amount}`);
+                }
+                element.textContent = formatCurrency(value);
+            });
+        } catch (configError) {
+            console.error("Config error:", configError);
+            showError("Failed to load some options");
+        }
+
+    } catch (mainError) {
+        console.error("Critical error:", mainError);
+        showError("System error - please contact support");
+    }
 });
 </script>
     <strong></strong>
