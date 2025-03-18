@@ -1,92 +1,41 @@
 <script src="config.amounts.js"></script>
 <script src="config.seasonal.js"></script>
 
-
-<style>
-/* Section Styling */
-.content-block {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border: 1px solid #dee2e6;
-}
-
-.section-header {
-    color: #2c3e50;
-    border-bottom: 2px solid #e74c3c;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-
-.highlight {
-    background-color: #fff3cd;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    display: inline-block;
-}
-
-.script-instruction {
-    color: #6c757d;
-    font-style: italic;
-    margin: 0.5rem 0;
-}
-</style>
-
-<!-- Header Section -->
-<div class="content-block" style="background: #e9ecef; text-align: center;">
-    <h1>POLICE OFFICERS SUPPORT ASSOCIATION PAC</h1>
-</div>
-
-<div class="content-block">
-    <!-- Greeting -->
-    <div class="section-header">OPENING</div>
-    <p>Hello, Mr./Mrs. <b id="first_name">Loading...</b> <b id="last_name">Loading...</b></p>
-    <p>This is <span class="highlight">(Caller's Full Name)</span> calling for the Police Officers Support Association PAC.</p>
-
-    <!-- Script Elements -->
-    <div class="script-instruction">
-        <hr>
-        <p><em>HOW ARE YOU...GREAT!!! <strong>XTAPS DO NOT THANK THEM</strong></em></p>
-        
-        <div class="subsection-header">IF IN A HURRY/VERY BUSY</div>
-        <p><strong>(SIR/MAM) I'M SORRY I CAUGHT YOU AT A BAD TIME I PROMISE TO BE EXTREMELY BRIEF.<br>
-        (CONTINUE WITH THE SCRIPT)</strong></p>
-    </div>
-</div>
-
-<!-- Add this CSS -->
-<style>
-.subsection-header {
-    color: #495057;
-    font-weight: 600;
-    margin: 1rem 0 0.5rem;
-    font-size: 1rem;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #dee2e6;
-    margin: 1.5rem 0;
-}
-
-.highlight {
-    background-color: #fff3cd;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-}
-
-<!-- Main Message Section -->
-<div class="content-block">
-    <div class="section-header">PRIMARY MESSAGE</div>
-    <p>(MAM/SIR) THE REASON FOR THE <strong>RECORDED</strong> CALL IS TO LET YOU KNOW THAT THE <strong>PAC</strong> IS CONDUCTING ITS 
-    <span id="seasonal-message" class="highlight"></span> TO SUPPORT LEGISLATORS WHO WORK TO KEEP OUR 
-    <strong>COMMUNITIES SAFE</strong>, AS WELL AS SUPPORT ASSISTANCE TO THE FAMILIES OF <strong>OFFICERS KILLED</strong> IN THE LINE OF DUTY.</p>
-</div>
+<p align="center">
+    <strong><u>POLICE OFFICERS SUPPORT ASSOCIATION  PAC</u></strong>
+</p>
+<p>
+    <br/>
+    HELLO,MR/MRS <b id="first_name">Loading...</b> <b id="last_name">Loading...</b> THIS IS (CALLERS FULL NAME)
+    CALLING  FOR THE POLICE OFFICERS SUPPORT ASSOCIATION PAC
+</p>
+<p>
+    <br/>
+    HOW ARE YOU...GREAT!!! <strong>XTAPS DO NOT THANK THEM</strong>
+</p>
+<p>
+    <strong></strong>
+</p>
+<p>
+    <strong> <u>IF IN A HURRY/VERY BUSY</u></strong>
+</p>
+<p>
+    <strong>
+        (SIR/MAM)  IM SORRY I CAUGHT YOU AT A BAD TIME I PROMISE TO BE EXTREMELY
+        BRIEF. (CONTINUE  WITH THE SCRIPT)
+    </strong>
+</p>
+<p>
+    <strong></strong>
+</p>
+<p>
+  (MAM/SIR) THE REASON FOR THE <strong>RECORDED</strong> CALL IS TO LET YOU
+  KNOW THAT THE <strong>PAC</strong> IS CONDUCTING ITS 
+  <span id="seasonal-message"></span> TO SUPPORT LEGISLATORS WHO WORK TO KEEP OUR
+  <strong>COMMUNITIES SAFE</strong>, AS WELL AS SUPPORT ASSISTANCE TO
+  THE FAMILIES OF <strong>OFFICERS KILLED</strong> IN THE LINE OF DUTY.
+</p>
+   <script>
   document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("seasonal-message").innerHTML = getSeasonalMessage();
   });
@@ -119,120 +68,19 @@ hr {
    <p>If YES...<b>REMEMBER TO MAXIMIZE LEAD <span style="background-color: #FFFF00" id="security_phrase_display">Loading...</span></b></p>
 </p>
 <p>
-    GREAT, THE TOP LEVELS TO SUPPORT ARE
-</p>
-<p>GOLD AT $<span id="goldAmount"></span></p>
-<p>SILVER AT $<span id="silverAmount"></span></p>
-<p>BRONZE AT $<span id="bronzeAmount"></span></p>
-<!-- Add error message container at the top of your HTML -->
-<div id="error-message" style="display: none; color: red; padding: 10px; text-align: center;"></div>
-
-<!-- Script section -->
+    GREAT, THE TOP LEVELS TO  SUPPORT ARE</u>
+<p>GOLD AT $<span data-amount="topLevels.gold"></span></p>
+<p>SILVER AT $<span data-amount="topLevels.silver"></span></p>
+<p>BRONZE AT $<span data-amount="topLevels.bronze"></span></p>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    try {
-        // ===== 1. Utility Functions =====
-        const roundToNearest5 = (num) => Math.round(num / 5) * 5;
-        const formatCurrency = (num) => num.toLocaleString('en-US');
-
-        // ===== 2. URL Parameter Handling =====
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        // Get values from URL
-        document.getElementById('first_name').textContent = urlParams.get('first_name') || 'Loading...';
-        document.getElementById('last_name').textContent = urlParams.get('last_name') || 'Loading...';
-        document.getElementById('security_phrase_display').textContent = urlParams.get('security_phrase') || 'Loading...';
-
-        // ===== 3. Seasonal Message =====
-        document.getElementById("seasonal-message").textContent = getSeasonalMessage();
-
-        // ===== 4. Error Handling =====
-        function showError(message) {
-            const errorElement = document.getElementById('error-message');
-            if (errorElement) {
-                errorElement.textContent = `⚠️ Error: ${message}`;
-                errorElement.style.display = 'block';
-            }
-        }
-
-        // ===== 5. Donation Amount Logic =====
-        function getPreviousDonationAmount() {
-            try {
-                const securityPhrase = urlParams.get('security_phrase') || '';
-                const amount = parseInt(securityPhrase.replace(/\D/g, ''));
-                
-                if (isNaN(amount)) {
-                    showError("Invalid security phrase amount");
-                    return AMOUNTS.minimum;
-                }
-                return amount;
-            } catch (error) {
-                console.error("Security phrase error:", error);
-                return AMOUNTS.minimum;
-            }
-        }
-
-        // ===== 6. Dynamic Pricing with Rounding =====
-        const goldElement = document.getElementById('goldAmount');
-        const silverElement = document.getElementById('silverAmount');
-        const bronzeElement = document.getElementById('bronzeAmount');
-
-        if (!goldElement || !silverElement || !bronzeElement) {
-            throw new Error("Missing pricing elements!");
-        }
-
-        const previousAmount = getPreviousDonationAmount();
-        if (previousAmount >= 50) {
-            try {
-                // Calculate and round tiers
-                const bronze = roundToNearest5(previousAmount * 2);
-                const silver = roundToNearest5(bronze + 50);
-                const gold = roundToNearest5(silver + 50);
-
-                // Validate
-                if ([bronze, silver, gold].some(isNaN)) {
-                    throw new Error("Invalid calculation");
-                }
-
-                // Format with commas (e.g., 1000 → 1,000)
-                bronzeElement.textContent = formatCurrency(bronze);
-                silverElement.textContent = formatCurrency(silver);
-                goldElement.textContent = formatCurrency(gold);
-            } catch (calcError) {
-                console.error("Pricing error:", calcError);
-                showError("Error calculating tiers - showing defaults");
-                bronzeElement.textContent = formatCurrency(AMOUNTS.topLevels.bronze);
-                silverElement.textContent = formatCurrency(AMOUNTS.topLevels.silver);
-                goldElement.textContent = formatCurrency(AMOUNTS.topLevels.gold);
-            }
-        } else {
-            bronzeElement.textContent = formatCurrency(AMOUNTS.topLevels.bronze);
-            silverElement.textContent = formatCurrency(AMOUNTS.topLevels.silver);
-            goldElement.textContent = formatCurrency(AMOUNTS.topLevels.gold);
-        }
-
-        // ===== 7. Load Other Amounts =====
-        const amountElements = document.querySelectorAll('[data-amount]');
-        try {
-            amountElements.forEach(element => {
-                const path = element.dataset.amount.split('.');
-                let value = AMOUNTS;
-                path.forEach(key => value = value?.[key]);
-                
-                if (typeof value === 'undefined') {
-                    throw new Error(`Missing config: ${element.dataset.amount}`);
-                }
-                element.textContent = formatCurrency(value);
-            });
-        } catch (configError) {
-            console.error("Config error:", configError);
-            showError("Failed to load some options");
-        }
-
-    } catch (mainError) {
-        console.error("Critical error:", mainError);
-        showError("System error - please contact support");
-    }
+    // Replace all amounts using the config
+    const amountElements = document.querySelectorAll('[data-amount]');
+    
+    amountElements.forEach(element => {
+        const amountType = element.dataset.amount;
+        element.textContent = AMOUNTS[amountType];
+    });
 });
 </script>
     <strong></strong>
@@ -253,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </p>
 <p>
     I COMPLETELY UNDERSTAND  (MAM/SIR), THIS CALL WAS DEFINETLY NOT MEANT TO
-    BURDEN YOU. THEY DO HAVE  SMALLER BOOSTER SPOTS AT JUST $<span data-amount="rebuttals.level1"></span> OR $<span data-amount="rebuttals.level2"></span> TO KEEP
+    BURDEN YOU. THEY DO HAVE  SMALLER BOOSTER SPOTS AT JUST $45 OR $35 TO KEEP
     EVERYONE INVOLVED, WHATS BEST  FOR YOU?
     <a
         href="https://crown.bytedialer.com/vicidial/admin.php?ADD=7111111&amp;script_id=POSAXTAPS#LAST%20RESORT%20OR%20UNDER%20$25"
@@ -268,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <p>
     I COMPLETELY UNDERSTAND  (SIR/MAM), EVERYONE WHO COMMITS TO HELP WILL
     RECIEVE A RECEIPT AND THANK YOU  LETTER FROM THE ORGANIZATION. THE LEVELS TO
-    HELP OUT ARE JUST $<span data-amount="rebuttals.level1"></span> OR $<span data-amount="rebuttals.level2"></span>  ONE TIME FOR THE DRIVE. WHATS BEST FOR
+    HELP OUT ARE JUST $45, $35 OR $25  ONE TIME FOR THE DRIVE. WHATS BEST FOR
     YOU?
     <a
         href="https://crown.bytedialer.com/vicidial/admin.php?ADD=7111111&amp;script_id=POSAXTAPS#LAST%20RESORT%20OR%20UNDER%20$25"
@@ -285,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
     THATS GREAT TO HEAR WE ALWAYS ENCOURAGE PEOPLE  TO SUPPORT THEIR LOCAL
     GROUPS AND ITS USUALLY RESIDENTS LIKE YOU WHO MAKE THE  BEST SUPPORTERS. TO
     MAKE IT EASIER FOR YOU TO HELP, THERE ARE SOME SUGGESTED  BOOSTER LEVELS FOR
-    JUST $<span data-amount="rebuttals.level1"></span> OR $<span data-amount="rebuttals.level2"></span> ONE TIME FOR THE DRIVE. WHATS BEST FOR YOU?
+    JUST $65 AND $55 ONE TIME FOR THE DRIVE. WHATS BEST FOR YOU?
     <a
         href="https://crown.bytedialer.com/vicidial/admin.php?ADD=7111111&amp;script_id=POSAXTAPS#HARD%20NO/%20LOWER%20LEVELS"
     >
@@ -302,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
     YOU KNOW MY RECORDS DONT INDICATE THAT THIS  ORGANIZATION HAS SENT ANYTHING
     OUT TO YOU. SO IT MIGHT HAVE BEEN A SLIGHLTY  SIMILAR ORGANIZATION. TO MAKE
     IT EASIER FOR YOU TO HELP THERE ARE SOME  SUGGESTED BOOSTER LEVELS FOR JUST
-    $<span data-amount="rebuttals.level1"></span> OR $<span data-amount="rebuttals.level2"></span> ONE TIME FOR THE DRIVE. WHATS  BEST FOR YOU?
+    $65 AND $55 ONE TIME FOR THE DRIVE. WHATS  BEST FOR YOU?
     <a
         href="https://crown.bytedialer.com/vicidial/admin.php?ADD=7111111&amp;script_id=POSAXTAPS#HARD%20NO/%20LOWER%20LEVELS"
     >
@@ -317,7 +165,8 @@ document.addEventListener("DOMContentLoaded", function() {
     <strong><u>GAVE TO ANOTHER  GROUP</u></strong> <br/>
     THATS GREAT TO HEAR. WE ALWAYS ENCOURAGE PEOPLE  TO SUPPORT OTHER GROUPS AND
     ITS USUALLY RESIDENTS LIKE YOU WHO MAKE THE BEST  SUPPORTERS. TO MAKE IT
-    EASIER FOR YOU TO HELP THERE ARE SUGGESTED BOOSTER  LEVELS FOR JUST $$<span data-amount="rebuttals.level1"></span> OR $<span data-amount="rebuttals.level2"></span> ONE TIME FOR THE DRIVE. WHATS BEST FOR YOU?
+    EASIER FOR YOU TO HELP THERE ARE SUGGESTED BOOSTER  LEVELS FOR JUST $65 AND
+    $55 ONE TIME FOR THE DRIVE. WHATS BEST FOR YOU?
     <a
         href="https://crown.bytedialer.com/vicidial/admin.php?ADD=7111111&amp;script_id=POSAXTAPS#HARD%20NO/%20LOWER%20LEVELS"
     >
@@ -333,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function() {
     YOU KNOW (MAM/SIR), ALL THE ASSOCIATION ASKS IS  THAT YOU PERSONALLY COMMIT
     TO HELP AND IF AFTER SPEAKING WITH YOUR SPOUSE YOU  WOULD LIKE TO ADD TO THE
     AMOUNT, YOUR WELCOME TO DO SO, BUT IF NOT, ANY AMOUNT  WOULD BE GREATLY
-    APPRECIATED. THE LEVELS TO HELP OUT ARE JUST ARE JUST $<span data-amount="rebuttals.level1"></span> OR $<span data-amount="rebuttals.level2"></span> ONE
+    APPRECIATED. THE LEVELS TO HELP OUT ARE JUST ARE JUST $45, $35  OR $25 ONE
     TIME FOR THE DRIVE. WHATS BEST FOR YOU?
     <a
         href="https://crown.bytedialer.com/vicidial/admin.php?ADD=7111111&amp;script_id=POSAXTAPS#LAST%20RESORT%20OR%20UNDER%20$25"
@@ -355,8 +204,8 @@ document.addEventListener("DOMContentLoaded", function() {
 </p>
 <p>
     <strong><u>LAST RESORT OR UNDER $25</u></strong> <br/>
-    WELL LET ME ASK YOU THIS. THE MINIMUM DONATION  FOR THE DRIVE IS ONLY $<span data-amount="minimum"></span>
-    CAN THEY COUNT ON YOU FOR AT LEAST $<span data-amount="minimum"></span> JUST THIS  ONE TIME? <br/>
+    WELL LET ME ASK YOU THIS. THE MINIMUM DONATION  FOR THE DRIVE IS ONLY $25.
+    CAN THEY COUNT ON YOU FOR AT LEAST $25, JUST THIS  ONE TIME? <br/>
     <u>IF AMOUNT GO TO CLOSING</u>
 </p>
 <p>
@@ -490,25 +339,11 @@ document.addEventListener("DOMContentLoaded", function() {
     <br/>
     <br/>
 </p>
-
-
+<script src="config.amounts.js"></script>
+<script src="config.seasonal.js"></script>  <!-- Ensure correct path -->
 <script>
-  // Seasonal message
   document.getElementById("seasonal-message").textContent = getSeasonalMessage();
-  
-  // Amounts loader
-  document.addEventListener("DOMContentLoaded", function() {
-    const amountElements = document.querySelectorAll('[data-amount]');
-    
-    amountElements.forEach(element => {
-      const path = element.dataset.amount.split('.');
-      let value = AMOUNTS;
-      path.forEach(key => value = value[key]);
-      element.textContent = value;
-    });
-  });
 </script>
-
 
 
 
