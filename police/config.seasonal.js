@@ -1,5 +1,5 @@
 const CONFIG = {
-    seasonalMessage: "YEARLY DRIVE",  // Change this as needed
+    seasonalMessage: "4th OF JULY DRIVE",  // Change this as needed
 };
 
 // Function to get the seasonal message dynamically
