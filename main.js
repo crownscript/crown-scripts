@@ -3,10 +3,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const firstName = urlParams.get('first_name') || 'Loading...';
   const lastName = urlParams.get('last_name') || 'Loading...';
   const securityPhrase = urlParams.get('security_phrase') || 'Loading...';
+  const city = urlParams.get('city') || 'Loading...';
+
 
   document.getElementById('first_name').textContent = firstName;
   document.getElementById('last_name').textContent = lastName;
   document.getElementById('security_phrase_display').textContent = securityPhrase;
+  document.getElementById('city').textContent = city;
+
 
   // ✅ Now call the function that calculates and updates amounts
   applyAmountsToDOM(securityPhrase);
