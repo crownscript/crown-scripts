@@ -5,19 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const securityPhrase = urlParams.get('security_phrase') || 'Loading...';
   const city = urlParams.get('city') || 'Loading...';
 
-
   document.getElementById('first_name').textContent = firstName;
   document.getElementById('last_name').textContent = lastName;
   document.getElementById('security_phrase_display').textContent = securityPhrase;
   document.getElementById('city').textContent = city;
 
-
-  // ✅ Now call the function that calculates and updates amounts
+  // ✅ Call standard rebuttal updates
   applyAmountsToDOM(securityPhrase);
-
-  // Optional: also refresh seasonal message
-  document.getElementById("seasonal-message").textContent = getSeasonalMessage();
-
   generateRebuttalTiers(securityPhrase);
 
+  // ✅ Call alternate rebuttal updates
+  updateAlternateRebuttalAmounts(securityPhrase);
+  generateAlternateRebuttalTiers(securityPhrase);
+
+  // Optional: refresh seasonal message
+  document.getElementById("seasonal-message").textContent = getSeasonalMessage();
 });
