@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOLUNTEER FIREFIGHTERS ALLIANCE</title>
+  <script src="/crown-scripts/config.amounts.js"></script>
+  <script src="config.seasonal.js"></script>
+  <script src="/crown-scripts/topspots.js"></script>
+  <script src="/crown-scripts/rebutals.js"></script>
+  <script src="/crown-scripts/alternaterebutalamounts.js"></script>
+  <script src="/crown-scripts/main.js"></script>
+
+</head>
+
+<body>
+  <section id="intro" align="center">
+    <strong><u>VOLUNTEER FIREFIGHTERS ALLIANCE</u></strong>
+  </section>
+
+  <section id="greeting">
+    <p>
+      HELLO, MR/MRS <b id="first_name">Loading...</b> <b id="last_name">Loading...</b>,
+      THIS IS (CALLER NAME) VOLUNTEER FIREFIGHTERS ALLIANCE.
+    </p>
+    <p>HOW ARE YOU... GREAT!!! <strong>XTAPS DO NOT THANK THEM</strong></p>
+  </section>
+
+  <section id="body">
+    <blockquote>
+      <p>
+        <span style="background-color: yellow; font-weight: bold; text-decoration: underline;">IF IN A HURRY / VERY BUSY</span><br />
+        <strong>(SIR/MAM) I’M SORRY I CAUGHT YOU AT A BAD TIME I PROMISE TO BE EXTREMELY BRIEF. (CONTINUE WITH THE SCRIPT)</strong>
+      </p>
+    </blockquote>
+
+    <p>
+      <b>AS A PAID CALLER FOR GOOD MERITS </b> THE REASON FOR THE <strong>RECORDED</strong> CALL IS TO LET YOU KNOW THAT THE <strong>FIREFIGHTERS</strong> ARE CONDUCTING THEIR
+      <span id="seasonal-message"></span>. THE GOAL OF THE DRIVE IS TO HELP PROVIDE LIFE SAVING EQUIPMENT GRANTS TO
+      <span style="background-color: lightgreen; font-weight: bold; text-decoration: underline;">UNDERFUNDED FIRE DEPARTMENTS</span>,
+        AS WELL AS DEATH BENEFITS TO THE FAMILIES OF FIREFIGHTERS
+      <span style="background-color: lightgreen; font-weight: bold; text-decoration: underline;">KILLED IN THE LINE OF DUTY </span> 
+      
+    </p>
+
+    <p>
+      <strong>WE ARE REACHING OUT TO EVERYONE IN <b id="city">Loading...</b>,</strong> AND I JUST WANTED TO ASK, CAN THE OFFICERS COUNT ON YOUR ONE-TIME SUPPORT?
+    </p>
+  </section>
+
+  <section id="donation-levels">
+    <blockquote>
+      <p>
+        <span style="color: black; background-color: red; font-weight: bold;">REBUTTALS AND MONEY OFFERINGS</span>
+      </p>
+      <p>If YES... <b>REMEMBER TO MAXIMIZE LEAD <span style="background-color: #FFFF00" id="security_phrase_display">Loading...</span></b></p>
+      <p>GREAT, THE TOP LEVELS TO SUPPORT ARE</p>
+      <p>GOLD AT $<span id="goldAmount" data-amount="topLevels.gold"></span></p>
+      <p>SILVER AT $<span id="silverAmount" data-amount="topLevels.silver"></span></p>
+      <p>BRONZE AT $<span id="bronzeAmount" data-amount="topLevels.bronze"></span></p>
+    </blockquote>
+  </section>
+
+  <section id="rebuttals">
+    <blockquote>
+        <strong><u>HARD NO / CAN'T AFFORD</u></strong>
+        <p>
+            I COMPLETELY UNDERSTAND (MAM/SIR), THIS CALL WAS DEFINITELY NOT MEANT TO BURDEN YOU.
+            THEY DO HAVE SMALLER BOOSTER SPOTS AT JUST <span class="rebuttal-level1">$45</span> or
+            <span class="rebuttal-level2">$35</span> TO KEEP EVERYONE INVOLVED.
+            WHAT'S BEST FOR YOU? <a href="#last-resort">(GO TO LAST RESORT)</a>
+            <a href="#close-qualify">(GO TO CLOSE & QUALIFY)</a>
+        </p>
+    </blockquote>
+
+    <blockquote>
+        <strong><u>I DON'T PLEDGE OVER THE PHONE/JUST SEND IT OUT</u></strong>
+        <p>
+            I COMPLETELY UNDERSTAND  (SIR/MAM), EVERYONE WHO COMMITS TO HELP WILL
+            RECIEVE A RECEIPT AND THANK YOU  LETTER FROM THE ORGANIZATION. THE LEVELS TO
+            HELP OUT ARE JUST <span class="rebuttal-level1">$45</span> or <span class="rebuttal-level2">$35</span>  ONE TIME FOR THE DRIVE. WHATS BEST FOR
+            YOU?<a href="#last-resort">(GO TO LAST RESORT)</a></a> <a href="#close-qualify">(GO TO CLOSE & QUALIFY)</a>
+        </p>
+    </blockquote>
+
+    <blockquote>
+        <strong><u>I GIVE LOCALLY</u></strong>
+        <p>
+            THATS GREAT TO HEAR WE ALWAYS ENCOURAGE PEOPLE  TO SUPPORT THEIR LOCAL
+            GROUPS AND ITS USUALLY RESIDENTS LIKE YOU WHO MAKE THE  BEST SUPPORTERS. TO
+            MAKE IT EASIER FOR YOU TO HELP, THERE ARE SOME SUGGESTED  BOOSTER LEVELS FOR
+            JUST <span class="rebuttal-level1">$45</span> or <span class="rebuttal-level2">$35</span> ONE TIME FOR THE DRIVE. WHATS BEST FOR YOU?
+            <a href="#last-resort">(GO TO LAST RESORT)</a><a href="#close-qualify">(GO TO CLOSE & QUALIFY)</a>
+        </p>
+    </blockquote>
+
+    <blockquote>
+        <strong><u>ALREADY GAVE TO THIS</u></strong>
+        <p>
+            YOU KNOW MY RECORDS DONT INDICATE THAT THIS  ORGANIZATION HAS SENT ANYTHING
+            OUT TO YOU. SO IT MIGHT HAVE BEEN A SLIGHLTY  SIMILAR ORGANIZATION. TO MAKE
+            IT EASIER FOR YOU TO HELP THERE ARE SOME  SUGGESTED BOOSTER LEVELS FOR JUST
+            <span class="rebuttal-level1">$45</span> or <span class="rebuttal-level2">$35</span>
+            ONE TIME FOR THE DRIVE. WHATS  BEST FOR YOU?<a href="#last-resort">(GO TO LAST RESORT)</a>.</a> <a href="#close-qualify">(GO TO CLOSE & QUALIFY)</a>
+        </p>
+    </blockquote>
+
+    <blockquote>
+        <strong><u>GAVE TO ANOTHER  GROUP</u></strong>
+        <p>
+            THATS GREAT TO HEAR. WE ALWAYS ENCOURAGE PEOPLE  TO SUPPORT OTHER GROUPS AND
+            ITS USUALLY RESIDENTS LIKE YOU WHO MAKE THE BEST  SUPPORTERS. TO MAKE IT
+            EASIER FOR YOU TO HELP THERE ARE SUGGESTED BOOSTER  LEVELS FOR JUST <span class="rebuttal-level1">$45</span> or <span class="rebuttal-level2">$35</span> 
+            ONE TIME FOR THE DRIVE. WHATS BEST FOR YOU?<a href="#last-resort">(GO TO LAST RESORT)</a></a> <a href="#close-qualify">(GO TO CLOSE & QUALIFY)</a>
+        </p>
+    </blockquote>
+
+    <blockquote>
+        <strong><u>MY SPOUSE  HANDLES THIS</u></strong>
+        <p>
+            YOU KNOW (MAM/SIR), ALL THE ASSOCIATION ASKS IS  THAT YOU PERSONALLY COMMIT
+            TO HELP AND IF AFTER SPEAKING WITH YOUR SPOUSE YOU  WOULD LIKE TO ADD TO THE
+            AMOUNT, YOUR WELCOME TO DO SO, BUT IF NOT, ANY AMOUNT  WOULD BE GREATLY
+            APPRECIATED. THE LEVELS TO HELP OUT ARE JUST ARE JUST $<span class="rebuttal-level1">$45</span> or <span class="rebuttal-level2">$35</span> ONE
+            TIME FOR THE DRIVE. WHATS BEST FOR YOU?L<a href="#last-resort">(GO TO LAST RESORT)</a>.</a> <a href="#close-qualify">(GO TO CLOSE & QUALIFY)</a>
+        </p>
+    </blockquote>
+
+    <blockquote>
+        <strong><u>AMOUNT LESS THAN PREVIOUS AMOUNT</u></strong>
+        <p>
+            WELL (MAM/SIR) IT DOES SHOW THAT YOUR USUALLY  COMFORTABLE DONATING AT THE
+            (COMMENTS  FIELD) LEVEL. CAN YOU DO THE (COMMENTS FIELD) AGAIN  TO STAY
+            INVOLVED FOR THESE (FIREFIGHTERS/ OFFICERS/ VETERANS), JUST ONE TIME  FOR
+            THE DRIVE? <a href="#close-qualify">(GO TO CLOSE & QUALIFY)</a>
+        </p>
+    </blockquote>
+   
+    <blockquote>
+        
+        <strong><u>LAST RESORT OR UNDER $25</u></strong>
+        <p id="last-resort">
+            WELL LET ME ASK YOU THIS. THE MINIMUM DONATION FOR THE DRIVE IS ONLY $25.
+            CAN THEY COUNT ON YOU FOR AT LEAST $25, JUST THIS ONE TIME?
+        </p>
+    </blockquote>
+<br>
+<br>
+  </section>
+
+  <section id="close-qualify">
+    <p>
+    <h3>CLOSE & QUALIFY</h3>
+    
+    <span style="background-color: yellow; font-weight: bold; text-decoration: underline;">
+      THANK YOU SO MUCH AND IS THE ($AMOUNT$) DEFINITELY COMFORTABLE FOR YOU?
+      <strong>(IF YES)</strong> PLEASE HOLD ON WHILE I TRANSFER YOU TO THE RECORDS DEPARTMENT
+      SO THEY CAN PROCESS YOUR GENEROUS DONATION! <strong>OKAY?</strong>
+    </span>
+    </p>
+    <h3>TRANSFER REBUTAL</h3>
+    <P>
+    <span style="background-color: yellow; font-weight: bold; text-decoration: underline;">
+        IM NOT ALLOWED TO VERIFY INFORMATION ONLY THE RECORDS DEPARTMENT CAN DO THAT. I DO HAVE TRANSFER YOU, IS THAT <B>OKAY?</B></P>
+    </span>
+    </P>
+  </section>
+<br>
+<br>
+  
+
+
+
+  <section id="faq" align="center">
+    <h2><u>QUESTION & RESPONSE</u></h2>
+
+        <p><strong>QUESTION: IF A QUESTION IS NOT ON HERE?</strong><br />
+        RESPONSE: PLEASE REFER THE CONSUMER TO THE CORRESPONDING "800" NUMBER: 866-493-4706</p>
+
+        <p><strong>WHO IS THE VFA</strong><br />
+        RESPONSE: THE VOLUNTEER FIREFIGHTER ALLIANCE IS A NATIONAL 501(C)3 NON-PROFIT CHARITABLE ORGANIZATION AND IS STRICTLY VOLUNTEER BASED. THE GOAL OF THE ORGANIZATION IS TO MITIGATE THE CAUSES AND EFFECTS OF LIFE-THREATENING ON-SCENE DANGERS WITH EQUIPMENT GRANTS TO UNDER-FUNDED AGENCIES.</p>
+
+        <p><strong>QUESTION: ARE YOU A MEMBER OF THE ORGANIZATION?</strong><br />
+        RESPONSE:NO, I WORK FOR GOOD MERITS INC A PROFESSIONAL FUNDRAISING COMPANY WHICH HAS BEEN CONTRACTED BY THE FOUNDATION.</p>
+
+
+        <p><strong>QUESTION: WHAT IS THE TAX STATUS OF THIS ORGANIZATION?</strong><br />
+        RESPONSE: THE VFA IS DESIGNATED BY THE IRS AS A 501(C)(3) NON-PROFIT CHARITABLE ORGANIZATION. YOUR CONTRIBUTION MAY BE TAX DEDUCTIBLE, HOWEVER WE SUGGEST YOU CONSULT YOUR TAX PREPARER.</p>
+
+        <p><strong>QUESTION: WHERE IS THE ORGANIZATION LOCATED?</strong><br />
+        RESPONSE: THE VFA IS HEADQUARTERED IN WHITE PINE TN.</p>
+
+        <p><strong>QUESTION: DO THEY HAVE A WEBSITE?</strong><br />
+        RESPONSE: YOU CAN VISIT THE FOUNDATION ON THE WEB AT WWW.volunteerfirefighteralliance.org</p>
+
+        <p><strong>QUESTION: HOW MUCH GOES TO THE ORGANIZATION?</strong><br />
+        RESPONSE: OUR INSTRUCTIONS ARE TO TELL EVERYONE A MINIMUM OF 13% GOES TO THE CAUSE, HOWEVER PLEASE CALL THE TOLL FREE # WHICH IS FOR MORE INFORMATION.</p>
+
+        <p><strong>QUESTION: DOES THIS HELP OUT LOCALLY?</strong><br />
+        RESPONSE:THIS IS A NATIONAL DRIVE.</p>
+
+        <p><strong>QUESTION: WHO DO YOU WORK FOR?</strong><br />
+        RESPONSE:I WORK FOR GOOD MERITS INC HEADQUARTERED AT 8 THE GREEN SUITE 8514 DOVER DE 19901</p>
+
+  </section>
+
+ 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("seasonal-message").textContent = getSeasonalMessage();
+      const securityPhrase = document.getElementById('security_phrase_display')?.textContent || '0';
+      updateRebuttalAmounts(securityPhrase);
+    });
+  </script>
+</body>
+</html>
