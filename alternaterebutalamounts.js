@@ -5,7 +5,7 @@ function updateAlternateRebuttalAmounts(securityPhrase) {
   const previousAmount = getPreviousDonationAmount(securityPhrase);
 
   if (previousAmount >= 65) {
-    level3 = roundToNearestFive(previousAmount * 1.2); // 20% higher, rounded
+    level3 = roundToNearestFive(previousAmount * 1.5); // 20% higher, rounded
     level4 = previousAmount; // Same as last year
   }
 
@@ -29,7 +29,7 @@ function generateAlternateRebuttalTiers(securityPhrase) {
   }
 
   const tiers = [];
-  let current = Math.round(previousAmount * 1.2);
+  let current = Math.round(previousAmount * 1.5);
 
   while (current >= AMOUNTS.minimum) {
     tiers.push(`$${formatCurrency(current)}`);
