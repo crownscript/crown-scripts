@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (iframe) {
       const screenHeight = window.innerHeight;
       const calculatedHeight = Math.min(Math.max(screenHeight * 0.7, 400), 900);
-      iframe.style.height = `${calculatedHeight}px`;
+      iframe.style.height = `1200px`;
     }
   }
 
