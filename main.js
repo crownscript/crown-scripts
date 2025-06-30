@@ -20,4 +20,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Optional: refresh seasonal message
   document.getElementById("seasonal-message").textContent = getSeasonalMessage();
+
+  // ✅ Dynamically resize iframe based on screen height
+  function resizeIframe() {
+    const iframe = document.getElementById("popupFrame");
+    if (iframe) {
+      const screenHeight = window.innerHeight;
+      const calculatedHeight = Math.min(Math.max(screenHeight * 0.7, 400), 900);
+      iframe.style.height = `${calculatedHeight}px`;
+    }
+  }
+
+  resizeIframe(); // Run on page load
+  window.addEventListener("resize", resizeIframe); // Run on screen resize
 });
