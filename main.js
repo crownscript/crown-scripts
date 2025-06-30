@@ -25,12 +25,20 @@ document.addEventListener("DOMContentLoaded", function () {
   function resizeIframe() {
     const iframe = document.getElementById("popupFrame");
     if (iframe) {
+      console.log("✅ Resizing iframe...");
       const screenHeight = window.innerHeight;
       const calculatedHeight = Math.min(Math.max(screenHeight * 0.7, 400), 900);
-      iframe.style.height = `1200px`;
+      iframe.setAttribute("height", "1200"); // Force height for Vicidial
+    } else {
+      console.warn("❌ iframe not found");
     }
   }
 
   resizeIframe(); // Run on page load
-  window.addEventListener("resize", resizeIframe); // Run on screen resize
+  window.addEventListener("resize", resizeIframe); // Run on window resize
+
+  // ⏳ Fallback in case iframe is injected late (common in Vicidial)
+  window.addEventListener("load", function () {
+    setTimeout(resizeIframe, 1000); // Try again after 1 second
+  });
 });
