@@ -17,6 +17,7 @@ function updateRebuttalAmounts(securityPhrase) {
   let level1 = AMOUNTS.rebuttals.level1;
   let level2 = AMOUNTS.rebuttals.level2;
   let level3 = AMOUNTS.rebuttals.level3 || AMOUNTS.minimum;
+  let minimumAmount = AMOUNTS.minimum;
 
   const previousAmount = getPreviousDonationAmount(securityPhrase);
 
@@ -24,11 +25,14 @@ function updateRebuttalAmounts(securityPhrase) {
     level1 = roundToNearestFive(previousAmount);
     level2 = roundToNearestFive(previousAmount * 0.8);
     level3 = roundToNearestFive(previousAmount * 0.6);
+    minimumAmount = roundToNearestFive(previousAmount * 0.5);
 
     if (level2 < AMOUNTS.minimum) level2 = AMOUNTS.minimum;
     if (level3 < AMOUNTS.minimum) level3 = AMOUNTS.minimum;
+    if (minimumAmount < AMOUNTS.minimum) minimumAmount = AMOUNTS.minimum;
   }
 
+  // Update all rebuttal amounts
   document.querySelectorAll('.rebuttal-level1').forEach(el => {
     el.textContent = `$${formatCurrency(level1)}`;
   });
@@ -39,6 +43,10 @@ function updateRebuttalAmounts(securityPhrase) {
 
   document.querySelectorAll('.rebuttal-level3').forEach(el => {
     el.textContent = `$${formatCurrency(level3)}`;
+  });
+
+  document.querySelectorAll('.rebuttal-minimum').forEach(el => {
+    el.textContent = `$${formatCurrency(minimumAmount)}`;
   });
 }
 
