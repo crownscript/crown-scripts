@@ -5,23 +5,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const securityPhrase = urlParams.get('security_phrase') || 'Loading...';
   const city = urlParams.get('city') || 'Loading...';
 
+  // Update all text fields
   document.getElementById('first_name').textContent = firstName;
   document.getElementById('last_name').textContent = lastName;
-  document.getElementById('security_phrase_display').textContent = securityPhrase;
   document.getElementById('city').textContent = city;
+  
+  // Update security phrase in all locations (ID and class)
+  document.getElementById('security_phrase_display').textContent = securityPhrase;
+  document.querySelectorAll('.security-phrase-display').forEach(el => {
+    el.textContent = securityPhrase;
+  });
 
-  // ✅ Call standard rebuttal updates
+  // Call standard rebuttal updates
   applyAmountsToDOM(securityPhrase);
   generateRebuttalTiers(securityPhrase);
-
-  // ✅ Call alternate rebuttal updates
-  updateAlternateRebuttalAmounts(securityPhrase);
-  generateAlternateRebuttalTiers(securityPhrase);
 
   // Optional: refresh seasonal message
   document.getElementById("seasonal-message").textContent = getSeasonalMessage();
 
-  // ✅ Dynamically resize iframe based on screen height
+  // Dynamically resize iframe based on screen height
   function resizeIframe() {
     const iframe = document.getElementById("popupFrame");
     if (iframe) {
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   resizeIframe(); // Run on page load
   window.addEventListener("resize", resizeIframe); // Run on window resize
 
-  // ⏳ Fallback in case iframe is injected late (common in Vicidial)
+  // Fallback in case iframe is injected late (common in Vicidial)
   window.addEventListener("load", function () {
     setTimeout(resizeIframe, 1000); // Try again after 1 second
   });
