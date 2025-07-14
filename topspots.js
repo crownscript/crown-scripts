@@ -47,3 +47,12 @@ function applyAmountsToDOM(securityPhrase) {
   goldEl.textContent = formatCurrency(gold);
 }
 
+// Ensure AMOUNTS is properly defined 
+const AMOUNTS = AMOUNTS || {
+  minimum: 50,         // Minimum amount to qualify for tier calculation
+  topLevels: {         // Fallback amounts when below minimum
+    bronze: 100,
+    silver: 250,
+    gold: 500
+  }
+};
