@@ -5,8 +5,13 @@ function formatCurrency(amount) {
 }
 
 function getPreviousDonationAmount(securityPhrase) {
-  const parsed = parseInt(securityPhrase.replace(/\D/g, ''));
-  return isNaN(parsed) ? 0 : parsed;
+  // Extract the first number (integer or decimal) from the string
+  const numberMatch = securityPhrase.match(/(\d+\.\d+|\d+)/);
+  if (!numberMatch) return 0;
+  
+  // Convert to float and round down to nearest whole number
+  const amount = parseFloat(numberMatch[0]);
+  return isNaN(amount) ? 0 : Math.floor(amount);
 }
 
 function roundToNearestFive(amount) {

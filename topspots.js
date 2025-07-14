@@ -7,8 +7,13 @@ function formatCurrency(num) {
 }
 
 function getPreviousDonationAmount(securityPhrase) {
-  const amount = parseInt(securityPhrase.replace(/\D/g, ''));
-  return isNaN(amount) ? AMOUNTS.minimum : amount;
+  // Extract the first number (integer or decimal) from the string
+  const numberMatch = securityPhrase.match(/(\d+\.\d+|\d+)/);
+  if (!numberMatch) return AMOUNTS.minimum;
+  
+  // Convert to float and round down to nearest whole number
+  const amount = parseFloat(numberMatch[0]);
+  return isNaN(amount) ? AMOUNTS.minimum : Math.floor(amount);
 }
 
 function calculateDonationTiers(baseAmount) {
