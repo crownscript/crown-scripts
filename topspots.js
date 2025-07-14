@@ -7,13 +7,8 @@ function formatCurrency(num) {
 }
 
 function getPreviousDonationAmount(securityPhrase) {
-  const match = securityPhrase.match(/\d+([.,]\d+)?/);
-  if (match) {
-    const sanitized = match[0].replace(',', '.');
-    const amount = parseFloat(sanitized);
-    if (!isNaN(amount)) return amount;
-  }
-  return AMOUNTS.minimum;
+  const amount = parseInt(securityPhrase.replace(/\D/g, ''));
+  return isNaN(amount) ? AMOUNTS.minimum : amount;
 }
 
 function calculateDonationTiers(baseAmount) {
@@ -31,8 +26,7 @@ function applyAmountsToDOM(securityPhrase) {
 
   let bronze, silver, gold;
 
-  // KEY FIX: Compare against AMOUNTS.minimum instead of hardcoded 50
-  if (previousAmount >= AMOUNTS.minimum) {
+  if (previousAmount >= 50) {
     try {
       ({ bronze, silver, gold } = calculateDonationTiers(previousAmount));
     } catch {
@@ -46,13 +40,3 @@ function applyAmountsToDOM(securityPhrase) {
   silverEl.textContent = formatCurrency(silver);
   goldEl.textContent = formatCurrency(gold);
 }
-
-// Ensure AMOUNTS is properly defined 
-const AMOUNTS = AMOUNTS || {
-  minimum: 50,         // Minimum amount to qualify for tier calculation
-  topLevels: {         // Fallback amounts when below minimum
-    bronze: 100,
-    silver: 250,
-    gold: 500
-  }
-};
