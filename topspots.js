@@ -31,7 +31,8 @@ function applyAmountsToDOM(securityPhrase) {
 
   let bronze, silver, gold;
 
-  if (previousAmount >= 50) {
+  // KEY FIX: Compare against AMOUNTS.minimum instead of hardcoded 50
+  if (previousAmount >= AMOUNTS.minimum) {
     try {
       ({ bronze, silver, gold } = calculateDonationTiers(previousAmount));
     } catch {
@@ -45,3 +46,4 @@ function applyAmountsToDOM(securityPhrase) {
   silverEl.textContent = formatCurrency(silver);
   goldEl.textContent = formatCurrency(gold);
 }
+
