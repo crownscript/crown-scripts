@@ -30,7 +30,7 @@ function updateRebuttalAmounts(securityPhrase) {
     level1 = roundToNearestFive(previousAmount);
     level2 = roundToNearestFive(previousAmount * 0.8);
     level3 = roundToNearestFive(previousAmount * 0.6);
-    minimumAmount = roundToNearestFive(previousAmount * 0.5);
+    minimumAmount = roundToNearestFive(previousAmount * 0.25);
 
     if (level2 < AMOUNTS.minimum) level2 = AMOUNTS.minimum;
     if (level3 < AMOUNTS.minimum) level3 = AMOUNTS.minimum;
