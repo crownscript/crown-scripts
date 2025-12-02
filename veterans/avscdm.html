@@ -24,7 +24,8 @@
                  WE SENT YOU A SUPPORTER RETURN ENVELOPE TO HELP PROMOTE LAWS THAT WILL 
                  <span style="background-color: lightgreen; font-weight: bold; text-decoration: underline;">
                     HELP PROVIDE AFFORDABLE HEALTHCARE TO OUR DISABLED VETERANS AND EMERGENCY HOUSING TO OUR HOMELESS VETS IN NEED.</span>
-                    CAN YOU MAKE THAT CONTRIBUTIONS TODAY WITH A DEBIT OR CREDIT CARD ONE TIME FOR THE <span id="seasonal-message"></span>
+                    CAN YOU MAKE THAT CONTRIBUTIONS TODAY WITH A DEBIT OR CREDIT CARD ONE TIME FOR THE <span class="seasonal-message"></span>
+
             </p>
 
     
@@ -43,7 +44,8 @@
         <blockquote>
             <p>
             <strong><u>IF DID NOT RECEIEVE/I DIDN'T PLEDGE</u></strong>
-            WE SENT YOU AN APPEAL A COUPLE MONTHS AGO. WE ARE TRYING TO WRAP UP THE DRIVE TODAY TO GET IMMEDIATE HELP TO THESE VETERANS FOR THE <span id="seasonal-message"></span>
+            WE SENT YOU AN APPEAL A COUPLE MONTHS AGO. WE ARE TRYING TO WRAP UP THE DRIVE TODAY TO GET IMMEDIATE HELP TO THESE VETERANS FOR THE <span class="seasonal-message"></span>
+
             CAN YOU MAKE YOUR CONTRIBUTION TODAY WITH A DEBIT OR CREDIT CARD JUST THIS ONE TIME?
             </p>
         </blockquote>
@@ -52,13 +54,15 @@
             <strong><u>SECURITY REBUTAL</u></strong>
             <p>
             I COMPLETELY UNDERSTAND YOUR HESITATION (DONOR NAME) BUT YOUR IMMEDIATE SUPPORT WOULD GO A LONG WAY FOR THESE GUYS. THAT’S WHY FOR YOUR SAFETY EVERYTHING IS DONE ON A SECURE LINE AND WE DON’T TAKE THE SECURITY CODE ON THE BACK OF YOUR CARD SO IT CAN NEVER BE USED AGAIN.
-             ALSO THE CHARGE WOULD SHOW UP AS (ORG NAME) SO YOU KNOW EXACTLY WERE YOUR MONEY IS GOING, SO WOULD THAT BE OK FOR YOU JUST THIS ONE TIME FOR THE <span id="seasonal-message"></span>?
+             ALSO THE CHARGE WOULD SHOW UP AS (ORG NAME) SO YOU KNOW EXACTLY WERE YOUR MONEY IS GOING, SO WOULD THAT BE OK FOR YOU JUST THIS ONE TIME FOR THE <span class="seasonal-message"></span>
+?
             </p>
         </blockquote>
         <blockquote>
             <strong><u>HAS PLEDGE BUT WANTS TO MAIL IT</u></strong>
             <p>
-            YOU KNOW (DONOR NAME) THAT ALWAYS AN OPTION. HOWEVER, THEY ARE TRYING TO CLOSE OUT THE DRIVE TODAY AND GET IMMEDIATE SUPPORT TO THESE GUYS. MOST PEOPLE HAVE BEEN HONORING THEIR PLEDGE TODAY WITH A CARD. SO WOULD THAT BE OK FOR YOU JUST THIS ONE TIME FOR THE <span id="seasonal-message"></span>?
+            YOU KNOW (DONOR NAME) THAT ALWAYS AN OPTION. HOWEVER, THEY ARE TRYING TO CLOSE OUT THE DRIVE TODAY AND GET IMMEDIATE SUPPORT TO THESE GUYS. MOST PEOPLE HAVE BEEN HONORING THEIR PLEDGE TODAY WITH A CARD. SO WOULD THAT BE OK FOR YOU JUST THIS ONE TIME FOR THE <span class="seasonal-message"></span>
+?
             
         </blockquote>
 
@@ -69,7 +73,8 @@
             <span class="rebuttal-level1" style="background-color: yellow; font-weight: bold;">$45</span>
             <span class="rebuttal-level2" style="background-color: yellow; font-weight: bold;">$35</span> OR 
             <span class="rebuttal-level3" style="background-color: yellow; font-weight: bold;">$30</span>
-            DOLLARS JUST THIS ONE TIME FOR THE <span id="seasonal-message"></span>
+            DOLLARS JUST THIS ONE TIME FOR THE <span class="seasonal-message"></span>
+
 
         </blockquote>
 
@@ -80,7 +85,8 @@
             <span class="rebuttal-level1" style="background-color: yellow; font-weight: bold;">$45</span>
             <span class="rebuttal-level2" style="background-color: yellow; font-weight: bold;">$35</span> OR 
             <span class="rebuttal-level3" style="background-color: yellow; font-weight: bold;">$30</span>
-            DOLLARS ONE TIME FOR THE <span id="seasonal-message"></span>?
+            DOLLARS ONE TIME FOR THE <span class="seasonal-message"></span>
+?
         </blockquote>
 
         <blockquote>
@@ -90,7 +96,8 @@
             <span class="rebuttal-level1" style="background-color: yellow; font-weight: bold;">$45</span>
             <span class="rebuttal-level2" style="background-color: yellow; font-weight: bold;">$35</span> OR 
             <span class="rebuttal-level3" style="background-color: yellow; font-weight: bold;">$30</span>
-            DOLLARS JUST THIS ONE TIME FOR THE<span id="seasonal-message"></span>?
+            DOLLARS JUST THIS ONE TIME FOR THE<span class="seasonal-message"></span>
+?
         </blockquote>
 
         <blockquote>
@@ -166,13 +173,21 @@
 
 
  
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementById("seasonal-message").textContent = getSeasonalMessage();
-      const securityPhrase = document.getElementById('security_phrase_display')?.textContent || '0';
-      updateRebuttalAmounts(securityPhrase);
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const msg = getSeasonalMessage();
+
+    // Fill all seasonal message placeholders
+    document.querySelectorAll(".seasonal-message").forEach(el => {
+        el.textContent = msg;
     });
-  </script>
+
+    // Update rebuttal amounts (run ONCE)
+    const securityPhrase = document.getElementById('security_phrase_display')?.textContent || '0';
+    updateRebuttalAmounts(securityPhrase);
+});
+</script>
+
 
 </body>
 </html>
