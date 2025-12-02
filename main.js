@@ -4,11 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const lastName = urlParams.get('last_name') || 'Loading...';
   const securityPhrase = urlParams.get('security_phrase') || 'Loading...';
   const city = urlParams.get('city') || 'Loading...';
+  const address = urlParams.get('address') || 'Loading...';
 
   // Update all text fields
   document.getElementById('first_name').textContent = firstName;
   document.getElementById('last_name').textContent = lastName;
   document.getElementById('city').textContent = city;
+  document.getElementById('address').textContent = address;
+
   
   // Update security phrase in all locations (ID and class)
   document.getElementById('security_phrase_display').textContent = securityPhrase;
