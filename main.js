@@ -4,24 +4,51 @@ document.addEventListener("DOMContentLoaded", function () {
   const lastName = urlParams.get('last_name') || 'Loading...';
   const securityPhrase = urlParams.get('security_phrase') || 'Loading...';
   const city = urlParams.get('city') || 'Loading...';
+  const address = urlParams.get('address') || 'Loading...';
 
   // Update all text fields
-  document.getElementById('first_name').textContent = firstName;
-  document.getElementById('last_name').textContent = lastName;
-  document.getElementById('city').textContent = city;
-  
-  // Update security phrase in all locations (ID and class)
-  document.getElementById('security_phrase_display').textContent = securityPhrase;
+  const firstNameEl = document.getElementById('first_name');
+  if (firstNameEl) firstNameEl.textContent = firstName;
+
+  const lastNameEl = document.getElementById('last_name');
+  if (lastNameEl) lastNameEl.textContent = lastName;
+
+  const cityEl = document.getElementById('city');
+  if (cityEl) cityEl.textContent = city;
+
+  const securityPhraseDisplay = document.getElementById('security_phrase_display');
+  if (securityPhraseDisplay) securityPhraseDisplay.textContent = securityPhrase;
+
+  const addressEl = document.getElementById('address');
+  if (addressEl) addressEl.textContent = address;
+
   document.querySelectorAll('.security-phrase-display').forEach(el => {
     el.textContent = securityPhrase;
   });
 
-  // Call standard rebuttal updates
-  applyAmountsToDOM(securityPhrase);
-  generateRebuttalTiers(securityPhrase);
+// ---- Amounts & rebuttal tiers (guarded) ----
+if (typeof applyAmountsToDOM === "function") {
+  try {
+    applyAmountsToDOM(securityPhrase);
+  } catch (e) {
+    console.error("Error in applyAmountsToDOM:", e);
+  }
+}
 
-  // Optional: refresh seasonal message
-  document.getElementById("seasonal-message").textContent = getSeasonalMessage();
+if (typeof generateRebuttalTiers === "function") {
+  try {
+    generateRebuttalTiers(securityPhrase);
+  } catch (e) {
+    console.error("Error in generateRebuttalTiers:", e);
+  }
+}
+
+// ---- Seasonal message (safe) ----
+const seasonalMessageEl = document.getElementById("seasonal-message");
+if (seasonalMessageEl && typeof getSeasonalMessage === "function") {
+  seasonalMessageEl.textContent = getSeasonalMessage();
+}
+
 
   // Dynamically resize iframe based on screen height
   function resizeIframe() {
