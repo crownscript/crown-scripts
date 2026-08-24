@@ -6,7 +6,13 @@
   const CAMPS = [
     {
       name: "AMERICAN COALITION FOR POLICE AND SHERIFFS PAC",
-      keys: ["acps", "american coalition for police and sheriffs"],
+      keys: [
+        "acps",
+        "american coalition for police and sheriffs",
+        "coalition for police and sheriffs pac",
+        "american coalition of police and sheriffs pac",
+        "coalition of police and sheriffs pac"
+      ],
       routes: {
         t4t: "police/acpst4t.html",
         xtap: "police/acpsxtap.html",
@@ -56,7 +62,11 @@
     },
     {
       name: "MICHIGAN FRATERNAL ORDER OF POLICE FUND",
-      keys: ["mifpac", "michigan fraternal order of police fund"],
+      keys: [
+        "mifpac",
+        "michigan fraternal order of police fund",
+        "michigan fraternal order of police political fund"
+      ],
       routes: {
         t4t: "police/mifpact4t.html",
         xtap: "police/mifpacxtap.html",
@@ -76,7 +86,7 @@
     },
     {
       name: "NATIONAL FALLEN OFFICER FOUNDATION",
-      keys: ["nfof", "national fallen officer foundation"],
+      keys: ["nfof", "national fallen officer foundation", "national fallen officers foundation"],
       routes: {
         t4t: "police/nfoft4t.html",
         xtap: "police/nfofxtap.html",
@@ -216,7 +226,7 @@
     },
     {
       name: "TEXAS FALLEN OFFICER FOUNDATION",
-      keys: ["txfof", "texas fallen officer foundation"],
+      keys: ["txfof", "texas fallen officer foundation", "texas fallen officers foundation"],
       routes: {
         t4t: "police/txfoft4t.html",
         xtap: "police/txfofxtap.html",
@@ -226,7 +236,7 @@
     },
     {
       name: "AMERICAN FIREFIGHTERS COALITION PAC",
-      keys: ["afc", "american firefighters coalition"],
+      keys: ["afc", "american firefighters coalition", "american firefighters coaltion pac"],
       routes: {
         t4t: "firefighters/afct4t.html",
         xtap: "firefighters/afcxtap.html",
@@ -346,7 +356,7 @@
     },
     {
       name: "AMERICAN VETERANS DEPARTMENT OF NEW YORK",
-      keys: ["nyamvets", "ny amvets", "american veterans department of new york"],
+      keys: ["nyamvets", "ny amvets", "new york amvets", "american veterans department of new york"],
       routes: {
         t4t: "veterans/nyamvetst4t.html",
         xtap: "veterans/nyamvetsxtap.html",
