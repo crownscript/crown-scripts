@@ -176,7 +176,7 @@
     },
     {
       name: "POLICE OFFICERS SUPPORT ASSOCIATION PAC",
-      keys: ["posa", "police officers support association"],
+      keys: ["posa", "police officers support association","POLICE OFFICERS SUPPORT ASSOCIATION PAC"],
       routes: {
         t4t: "police/posat4t.html",
         xtap: "police/posaxtap.html",
