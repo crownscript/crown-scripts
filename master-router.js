@@ -403,10 +403,30 @@
       .replace(/[^A-Z0-9]+/g, "");
   }
 
+  function cleanVicidialValue(value) {
+    const cleaned = String(value || "").trim();
+    if (!cleaned || /^--A--.*--B--$/i.test(cleaned)) {
+      return "";
+    }
+    return cleaned;
+  }
+
+  function getCustomerName(params) {
+    const fullName = cleanVicidialValue(params.get("name")) || cleanVicidialValue(params.get("full_name"));
+    if (fullName) {
+      return fullName;
+    }
+
+    const firstName = cleanVicidialValue(params.get("first_name"));
+    const lastName = cleanVicidialValue(params.get("last_name"));
+    return [firstName, lastName].filter(Boolean).join(" ");
+  }
+
   function getParams() {
     const params = new URLSearchParams(window.location.search);
     return {
       params,
+      customerName: getCustomerName(params),
       listDescription: params.get("list_description") || "",
       sourceId: params.get("source_id") || ""
     };
@@ -509,6 +529,7 @@
     if (!camp || !scriptType || !route) {
       showError("Could not detect the correct script.", [
         "Mode: " + MODE,
+        "Customer Name: " + (info.customerName || "NONE"),
         "List Description: " + (info.listDescription || "[missing]"),
         "Source ID: " + (info.sourceId || "[missing]"),
         "Detected Camp: " + (camp ? camp.name : "[none]"),
