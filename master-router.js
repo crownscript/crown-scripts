@@ -186,7 +186,7 @@
     },
     {
       name: "POLICE OFFICERS SUPPORT COMMITTEE PAC",
-      keys: ["posc", "police officers support committee"],
+      keys: ["posc", "police officers support committee","POLICE OFFICER SUPPORT COMMITTEE PAC"],
       routes: {
         t4t: "police/posct4t.html",
         xtap: "police/poscxtap.html",
