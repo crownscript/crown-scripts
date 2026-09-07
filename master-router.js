@@ -166,7 +166,7 @@
     },
     {
       name: "POLICE OFFICERS ALLIANCE PAC",
-      keys: ["poac", "police officers alliance"],
+      keys: ["poac", "police officers alliance","POLICE OFFICERS ALLIANCE PAC"],
       routes: {
         t4t: "police/poact4t.html",
         xtap: "police/poacxtap.html",
@@ -366,7 +366,7 @@
     },
     {
       name: "THE UNITED VETERANS OF AMERICA PAC",
-      keys: ["unvet", "united veterans of america"],
+      keys: ["unvet", "united veterans of america","UNITED VETERANS OF AMERICA PAC"],
       routes: {
         t4t: "veterans/unvett4t.html",
         xtap: "veterans/unvetxtap.html",
