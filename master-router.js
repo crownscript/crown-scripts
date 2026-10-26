@@ -266,7 +266,7 @@
     },
     {
       name: "FIREFIGHTERS CHARITABLE FOUNDATION",
-      keys: ["fcf", "firefighters charitable foundation"],
+      keys: ["fcf", "firefighters charitable foundation","FIREFIGHTERS CHARITABLE FOUNDATION"],
       routes: {
         t4t: "firefighters/fcft4t.html",
         xtap: "firefighters/fcfxtap.html",
