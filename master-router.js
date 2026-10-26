@@ -156,7 +156,7 @@
     },
     {
       name: "POLICE OFFICERS ACTION COMMITTEE PAC",
-      keys: ["poacom", "police officers action committee"],
+      keys: ["poacom", "police officers action committee","POLICE OFFICER ACTION COMMITTEE PAC"],
       routes: {
         t4t: "police/poacomt4t.html",
         xtap: "police/poacomxtap.html",
@@ -186,7 +186,7 @@
     },
     {
       name: "POLICE OFFICERS SUPPORT COMMITTEE PAC",
-      keys: ["posc", "police officers support committee","POLICE OFFICER SUPPORT COMMITTEE PAC"],
+      keys: ["posc", "police officers support committee","POLICE OFFICER SUPPORT COMMITTEE PAC","POLICE OFFICERS SUPPORT COMMITTEE PAC"],
       routes: {
         t4t: "police/posct4t.html",
         xtap: "police/poscxtap.html",
