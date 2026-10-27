@@ -442,23 +442,12 @@
     ].filter(Boolean).join(" ");
   }
 
-  function pickScriptType(sourceId, campText) {
+  function pickScriptType(sourceId) {
     const sourceKey = normalize(sourceId).charAt(0);
     if (sourceKey === "T") {
       return "t4t";
     }
-    if (sourceKey === "S" || sourceKey === "C" || sourceKey === "D") {
-      return "xtap";
-    }
-
-    const normalizedCampText = normalize(campText);
-    if (normalizedCampText.indexOf("T4T") !== -1) {
-      return "t4t";
-    }
-    if (normalizedCampText.indexOf("XTAP") !== -1) {
-      return "xtap";
-    }
-    return "";
+    return "xtap";
   }
 
   function scoreCamp(camp, normalizedCampText) {
@@ -521,7 +510,7 @@
   function run() {
     const info = getParams();
     const campText = routeText(info.params, info.listDescription);
-    const scriptType = pickScriptType(info.sourceId, campText);
+    const scriptType = pickScriptType(info.sourceId);
     const camp = pickCamp(campText);
     const variant = MODE === "inbound" ? scriptType + "inbound" : scriptType;
     const route = camp && camp.routes ? camp.routes[variant] : "";
@@ -534,7 +523,7 @@
         "Source ID: " + (info.sourceId || "[missing]"),
         "Detected Camp: " + (camp ? camp.name : "[none]"),
         "Detected Script Type: " + (scriptType || "[none]"),
-        "Expected Source IDs: T = T4T, S, C or D = XTAP"
+        "Source ID Routing: Starts with T = T4T; everything else = XTAP"
       ]);
       return;
     }
