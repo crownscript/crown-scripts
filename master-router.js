@@ -447,7 +447,7 @@
     if (sourceKey === "T") {
       return "t4t";
     }
-    if (sourceKey === "S" || sourceKey === "C") {
+    if (sourceKey === "S" || sourceKey === "C" || sourceKey === "D") {
       return "xtap";
     }
 
@@ -534,7 +534,7 @@
         "Source ID: " + (info.sourceId || "[missing]"),
         "Detected Camp: " + (camp ? camp.name : "[none]"),
         "Detected Script Type: " + (scriptType || "[none]"),
-        "Expected Source IDs: T = T4T, S or C = XTAP"
+        "Expected Source IDs: T = T4T, S, C or D = XTAP"
       ]);
       return;
     }
